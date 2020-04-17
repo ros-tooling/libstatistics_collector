@@ -29,10 +29,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_ros REQUIRED)
-find_package(statistics_msgs REQUIRED)
 find_package(rcl REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(statistics_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
 include_directories("include")
@@ -47,9 +47,9 @@ add_library(${PROJECT_NAME}
 target_compile_definitions(${PROJECT_NAME} PRIVATE "LIBSTATISTICS_COLLECTOR_BUILDING_LIBRARY")
 
 ament_target_dependencies(${PROJECT_NAME}
-  "statistics_msgs"
   "rcl"
-  "rcpputils")
+  "rcpputils"
+  "statistics_msgs")
 
 install(
   TARGETS ${PROJECT_NAME}
@@ -60,7 +60,7 @@ install(
 
 ament_export_include_directories(include)
 ament_export_libraries(${PROJECT_NAME})
-ament_export_dependencies("statistics_msgs" "rcl" "rcpputils" "rosidl_default_runtime")
+ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" statistics_msgs)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
