@@ -60,7 +60,7 @@ install(
 
 ament_export_include_directories(include)
 ament_export_libraries(${PROJECT_NAME})
-ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" statistics_msgs)
+ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
