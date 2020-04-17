@@ -1,8 +1,7 @@
 # libstatistics_collector
 
 ![License](https://img.shields.io/github/license/ros-tooling/libstatistics_collector)
-[![GitHub Action Status](https://github.com/ros-tooling/libstatistics_collector/Test%20libstatistics_collectors/badge.svg)](https://github.com/ros-tooling/libstatistics_collector/actions?query=workflow%3A%22Test+libstatistics_collector%22)
-
+[![Test libstatistics_collector](https://github.com/ros-tooling/libstatistics_collector/workflows/Test%20libstatistics_collector/badge.svg)](https://github.com/ros-tooling/libstatistics_collector/actions?query=workflow%3A%22Test+libstatistics_collector%22)
 ## Description
 
 This C++ library provides the following:
