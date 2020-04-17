@@ -20,6 +20,7 @@
 #include "builtin_interfaces/msg/time.hpp"
 #include "statistics_msgs/msg/metrics_message.hpp"
 
+#include "libstatistics_collector/visibility_control.hpp"
 #include "libstatistics_collector/moving_average_statistics/types.hpp"
 
 namespace libstatistics_collector
@@ -38,6 +39,7 @@ namespace collector
  * @param data statistics derived from the measurements made in the window
  * @return a MetricsMessage containing the statistics in the data parameter
  */
+LIBSTATISTICS_COLLECTOR_PUBLIC
 statistics_msgs::msg::MetricsMessage GenerateStatisticMessage(
   const std::string & node_name,
   const std::string & metric_name,

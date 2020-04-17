@@ -22,7 +22,6 @@
 
 #include "libstatistics_collector/collector/collector.hpp"
 
-
 namespace
 {
 constexpr const char kTestMetricName[] = "test_metric_name";

@@ -19,6 +19,8 @@
 #include <sstream>
 #include <string>
 
+#include "libstatistics_collector/visibility_control.hpp"
+
 namespace libstatistics_collector
 {
 namespace moving_average_statistics
@@ -27,7 +29,7 @@ namespace moving_average_statistics
 /**
  *  A container for statistics data results for a set of recorded observations.
  */
-struct StatisticData
+struct LIBSTATISTICS_COLLECTOR_PUBLIC StatisticData
 {
   double average = std::nan("");
   double min = std::nan("");
@@ -43,6 +45,7 @@ struct StatisticData
  * @return std::string formatted struct contents in an easily readable format, e.g.,
  * /"avg=1, min=2, max=3, std_dev=4, count=5/"
  */
+LIBSTATISTICS_COLLECTOR_PUBLIC
 std::string StatisticsDataToString(const StatisticData & results);
 
 }  // namespace moving_average_statistics

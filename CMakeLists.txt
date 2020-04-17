@@ -14,7 +14,7 @@ endif()
 # Enable strict compiler flags if possible.
 include(CheckCXXCompilerFlag)
 set(FLAGS -pedantic -Wno-long-long -Wall -Wextra -Wcast-qual -Wformat -Wwrite-strings -Wcast-align
-  -Wno-error=cast-align -Wmissing-declarations)
+  -Wno-error=cast-align -Wmissing-declarations -Wconversion)
 foreach(FLAG ${FLAGS})
   check_cxx_compiler_flag(${FLAG} R${FLAG})
   if(${R${FLAG}})
@@ -28,29 +28,39 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_ros REQUIRED)
 find_package(rcl REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(statistics_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
-rosidl_generate_interfaces(libstatistics_collector_test_msgs
-  "test/msg/DummyMessage.msg"
-  DEPENDENCIES "std_msgs"
-)
+include_directories("include")
+include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
 
-include_directories(include)
-
-add_library(${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME}
   src/libstatistics_collector/collector/collector.cpp
   src/libstatistics_collector/collector/generate_statistics_message.cpp
   src/libstatistics_collector/moving_average_statistics/moving_average.cpp
   src/libstatistics_collector/moving_average_statistics/types.cpp)
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE "LIBSTATISTICS_COLLECTOR_BUILDING_LIBRARY")
+
 ament_target_dependencies(${PROJECT_NAME}
   "rcl"
   "rcpputils"
   "statistics_msgs")
+
+install(
+  TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+ament_export_include_directories(include)
+ament_export_libraries(${PROJECT_NAME})
+ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -77,25 +87,18 @@ if(BUILD_TESTING)
     test/topic_statistics_collector/test_received_message_age.cpp)
   target_link_libraries(test_received_message_age ${PROJECT_NAME})
   ament_target_dependencies(test_received_message_age "rcl" "rcpputils")
+
+  rosidl_generate_interfaces(libstatistics_collector_test_msgs
+    "test/msg/DummyMessage.msg"
+    DEPENDENCIES "std_msgs")
+
+  # To enable use of dummy_message.hpp in test_received_message_age
+  rosidl_target_interfaces(test_received_message_age libstatistics_collector_test_msgs "rosidl_typesupport_cpp")
 endif()
-
-# To enable use of dummy_message.hpp in test_received_message_age
-rosidl_target_interfaces(test_received_message_age libstatistics_collector_test_msgs "rosidl_typesupport_cpp")
-
-install(
-  TARGETS "${PROJECT_NAME}"
-  EXPORT "${PROJECT_NAME}-targets"
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin
-)
 
 install(
   DIRECTORY include/
   DESTINATION include
 )
-
-ament_export_dependencies(rcl rcpputils rosidl_default_runtime)
-ament_export_include_directories(include)
-ament_export_libraries(${PROJECT_NAME})
 
 ament_package()

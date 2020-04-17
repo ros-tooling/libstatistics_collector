@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 #include <gtest/gtest.h>
 
 #include <array>
@@ -35,7 +34,6 @@ constexpr const double kExpectedStd = 4.997999599839919955173;
 const std::array<double, kExpectedSize> kTestData{-3.5, -2.1, -1.1, 0.0, 4.7, 5.0,
   6.7, 9.9, 11.0};
 }  // namespace
-
 
 /**
  * Test fixture
@@ -122,7 +120,7 @@ TEST_F(MovingAverageStatisticsTestFixture, TestGetStatistics) {
   EXPECT_DOUBLE_EQ(result.min, kExpectedMin);
   EXPECT_DOUBLE_EQ(result.max, kExpectedMax);
   EXPECT_DOUBLE_EQ(result.standard_deviation, kExpectedStd);
-  EXPECT_DOUBLE_EQ(result.sample_count, kExpectedSize);
+  EXPECT_EQ(result.sample_count, kExpectedSize);
 }
 
 TEST_F(MovingAverageStatisticsTestFixture, TestGetStatisticsInt) {
@@ -145,7 +143,7 @@ TEST_F(MovingAverageStatisticsTestFixture, TestGetStatisticsInt) {
   EXPECT_DOUBLE_EQ(result.min, kExpectedMinimum);
   EXPECT_DOUBLE_EQ(result.max, kExpectedMaximum);
   EXPECT_DOUBLE_EQ(result.standard_deviation, kExpectedStd);
-  EXPECT_DOUBLE_EQ(result.sample_count, kExpectedSize);
+  EXPECT_EQ(result.sample_count, kExpectedSize);
 }
 
 TEST_F(MovingAverageStatisticsTestFixture, TestReset) {
