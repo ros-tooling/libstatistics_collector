@@ -9,9 +9,9 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>metrics_statistics_msgs</depend>
   <depend>rcl</depend>
   <depend>rcpputils</depend>
+  <depend>statistics_msgs</depend>
 
   <build_depend>rosidl_default_generators</build_depend>
   <build_depend>std_msgs</build_depend>

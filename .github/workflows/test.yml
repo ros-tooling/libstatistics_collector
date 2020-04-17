@@ -1,0 +1,58 @@
+name: Test libstatistics_collector
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  schedule:
+    # Run every hour. This helps detect flakiness,
+    # and broken external dependencies.
+    - cron:  '0 * * * *'
+
+jobs:
+  build_and_test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macOS-latest, ubuntu-18.04]
+    steps:
+    - uses: ros-tooling/setup-ros@0.0.19
+    - uses: ros-tooling/action-ros-ci@0.0.15
+      with:
+        package-name: libstatistics_collector
+        colcon-mixin-name: coverage-gcc
+        colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+    - uses: codecov/codecov-action@v1.0.6
+      # Prevent being rate limited by only reporting coverage from the Ubuntu
+      # build.
+      if: matrix.os == 'ubuntu-18.04'
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ros_ws/lcov/total_coverage.info
+        flags: unittests
+        name: codecov-umbrella
+        yml: ./codecov.yml
+        fail_ci_if_error: true
+    - uses: actions/upload-artifact@master
+      with:
+        name: colcon-logs-${{ matrix.os }}
+        path: ros_ws/log
+
+  build_and_test_asan:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+          os: [ubuntu-18.04]
+    steps:
+    - uses: ros-tooling/setup-ros@0.0.19
+    - uses: ros-tooling/action-ros-ci@0.0.15
+      with:
+        colcon-mixin-name: asan
+        colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+        package-name: libstatistics_collector
+    - uses: actions/upload-artifact@master
+      with:
+        name: colcon-logs-${{ matrix.os }}-asan
+        path: ros_ws/log

@@ -18,7 +18,7 @@
 #include <string>
 
 #include "builtin_interfaces/msg/time.hpp"
-#include "metrics_statistics_msgs/msg/metrics_message.hpp"
+#include "statistics_msgs/msg/metrics_message.hpp"
 
 #include "libstatistics_collector/moving_average_statistics/types.hpp"
 
@@ -38,7 +38,7 @@ namespace collector
  * @param data statistics derived from the measurements made in the window
  * @return a MetricsMessage containing the statistics in the data parameter
  */
-metrics_statistics_msgs::msg::MetricsMessage GenerateStatisticMessage(
+statistics_msgs::msg::MetricsMessage GenerateStatisticMessage(
   const std::string & node_name,
   const std::string & metric_name,
   const std::string & unit,

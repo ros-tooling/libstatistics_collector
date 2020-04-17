@@ -28,10 +28,10 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(metrics_statistics_msgs REQUIRED)
 find_package(rcl REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(statistics_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
 rosidl_generate_interfaces(libstatistics_collector_test_msgs
@@ -48,9 +48,9 @@ add_library(${PROJECT_NAME} SHARED
   src/libstatistics_collector/moving_average_statistics/types.cpp)
 
 ament_target_dependencies(${PROJECT_NAME}
-  "metrics_statistics_msgs"
   "rcl"
-  "rcpputils")
+  "rcpputils"
+  "statistics_msgs")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

@@ -17,16 +17,16 @@
 #include <string>
 #include <utility>
 
-#include "metrics_statistics_msgs/msg/statistic_data_type.hpp"
+#include "statistics_msgs/msg/statistic_data_type.hpp"
 
 namespace libstatistics_collector
 {
 namespace collector
 {
 
-using metrics_statistics_msgs::msg::MetricsMessage;
-using metrics_statistics_msgs::msg::StatisticDataPoint;
-using metrics_statistics_msgs::msg::StatisticDataType;
+using statistics_msgs::msg::MetricsMessage;
+using statistics_msgs::msg::StatisticDataPoint;
+using statistics_msgs::msg::StatisticDataType;
 
 MetricsMessage GenerateStatisticMessage(
   const std::string & node_name,
