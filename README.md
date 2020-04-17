@@ -1,7 +1,7 @@
 # libstatistics_collector
 
 ![License](https://img.shields.io/github/license/ros-tooling/libstatistics_collector)
-[![GitHub Action Status](https://github.com/ros-tooling/libstatistics_collector/Test%20libstatistics_collectors/badge.svg)](https://github.com/ros-tooling/libstatistics_collectors/actions?query=workflow%3A%22Test+libstatistics_collectors%22)
+[![GitHub Action Status](https://github.com/ros-tooling/libstatistics_collector/Test%20libstatistics_collectors/badge.svg)](https://github.com/ros-tooling/libstatistics_collector/actions?query=workflow%3A%22Test+libstatistics_collector%22)
 
 ## Description
 
