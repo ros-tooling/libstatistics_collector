@@ -18,11 +18,11 @@
 #include <mutex>
 #include <string>
 
-#include "metric_details_interface.hpp"
-
 #include "libstatistics_collector/visibility_control.hpp"
 #include "libstatistics_collector/moving_average_statistics/moving_average.hpp"
 #include "libstatistics_collector/moving_average_statistics/types.hpp"
+
+#include "metric_details_interface.hpp"
 
 #include "rcpputils/thread_safety_annotations.hpp"
 
