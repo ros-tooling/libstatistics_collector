@@ -17,6 +17,8 @@
 
 #include <string>
 
+#include "libstatistics_collector/visibility_control.hpp"
+
 namespace libstatistics_collector
 {
 namespace collector
@@ -26,7 +28,7 @@ namespace collector
  * Interface to represent a single metric's name and unit,
  * which are used for metric message generation and publication.
  */
-class MetricDetailsInterface
+class LIBSTATISTICS_COLLECTOR_PUBLIC MetricDetailsInterface
 {
 public:
   virtual ~MetricDetailsInterface() = default;

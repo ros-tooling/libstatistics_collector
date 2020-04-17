@@ -38,6 +38,7 @@ class TopicStatisticsCollector : public collector::Collector
 {
 public:
   TopicStatisticsCollector() = default;
+
   virtual ~TopicStatisticsCollector() = default;
 
   /**

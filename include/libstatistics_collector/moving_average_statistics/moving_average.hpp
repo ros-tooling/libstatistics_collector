@@ -25,6 +25,8 @@
 
 #include "types.hpp"
 
+#include "libstatistics_collector/visibility_control.hpp"
+
 #include "rcpputils/thread_safety_annotations.hpp"
 
 namespace libstatistics_collector
@@ -43,32 +45,38 @@ namespace moving_average_statistics
  *  for standard deviation.
  *
  *  When statistics are not available, e.g. no observations have been made, NaNs are returned.
-**/
+ */
 class MovingAverageStatistics
 {
 public:
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   MovingAverageStatistics() = default;
+
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   ~MovingAverageStatistics() = default;
 
   /**
    *  Returns the arithmetic mean of all data recorded. If no observations have been made, returns NaN.
    *
    *  @return The arithmetic mean of all data recorded, or NaN if the sample count is 0.
-  **/
+   */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   double Average() const RCPPUTILS_TSA_REQUIRES(mutex_);
 
   /**
    *  Returns the maximum value recorded. If size of list is zero, returns NaN.
    *
    *  @return The maximum value recorded, or NaN if size of data is zero.
-  **/
+   */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   double Max() const RCPPUTILS_TSA_REQUIRES(mutex_);
 
   /**
    *  Returns the minimum value recorded. If size of list is zero, returns NaN.
    *
    *  @return The minimum value recorded, or NaN if size of data is zero.
-  **/
+   */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   double Min() const RCPPUTILS_TSA_REQUIRES(mutex_);
 
   /**
@@ -78,7 +86,8 @@ public:
    *  see https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford%27s_online_algorithm
    *
    *  @return The standard deviation (population) of all data recorded, or NaN if size of data is zero.
-  **/
+   */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   double StandardDeviation() const RCPPUTILS_TSA_REQUIRES(mutex_);
 
   /**
@@ -88,12 +97,14 @@ public:
    *
    *  @return StatisticData object, containing average, minimum, maximum, standard deviation (population),
    *  and sample count.
-  **/
+   */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   StatisticData GetStatistics() const;
 
   /**
    *  Reset all calculated values. Equivalent to a new window for a moving average.
-  **/
+   */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   void Reset();
 
   /**
@@ -101,7 +112,8 @@ public:
    *  Note: any input values of NaN will be discarded and not added as a measurement.
    *
    *  @param item The item that was observed
-  **/
+   */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   virtual void AddMeasurement(const double item);
 
   /**
@@ -109,6 +121,7 @@ public:
    *
    * @return the number of samples observed
    */
+  LIBSTATISTICS_COLLECTOR_PUBLIC
   uint64_t GetCount() const;
 
 private:
