@@ -60,7 +60,7 @@ MetricsMessage GenerateStatisticMessage(
 
   msg.statistics.emplace_back();
   msg.statistics.back().data_type = StatisticDataType::STATISTICS_DATA_TYPE_SAMPLE_COUNT;
-  msg.statistics.back().data = data.sample_count;
+  msg.statistics.back().data = static_cast<double>(data.sample_count);
 
   msg.statistics.emplace_back();
   msg.statistics.back().data_type = StatisticDataType::STATISTICS_DATA_TYPE_STDDEV;
