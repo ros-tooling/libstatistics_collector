@@ -39,6 +39,16 @@ jobs:
         name: colcon-logs-${{ matrix.os }}
         path: ros_ws/log
 
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+      if: always()
+    - uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+      if: always()
+
   build_and_test_asan:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -56,3 +66,13 @@ jobs:
       with:
         name: colcon-logs-${{ matrix.os }}-asan
         path: ros_ws/log
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+      if: always()
+    - uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+      if: always()
