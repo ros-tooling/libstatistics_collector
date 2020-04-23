@@ -35,9 +35,6 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(statistics_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
-include_directories("include")
-include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
-
 add_library(${PROJECT_NAME}
   src/libstatistics_collector/collector/collector.cpp
   src/libstatistics_collector/collector/generate_statistics_message.cpp
@@ -46,13 +43,18 @@ add_library(${PROJECT_NAME}
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE "LIBSTATISTICS_COLLECTOR_BUILDING_LIBRARY")
 
+target_include_directories(${PROJECT_NAME} PUBLIC
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>"
+  "$<INSTALL_INTERFACE:include>")
+
 ament_target_dependencies(${PROJECT_NAME}
   "rcl"
   "rcpputils"
   "statistics_msgs")
 
 install(
-  TARGETS ${PROJECT_NAME}
+  TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
@@ -60,6 +62,7 @@ install(
 
 ament_export_include_directories(include)
 ament_export_libraries(${PROJECT_NAME})
+ament_export_targets(${PROJECT_NAME})
 ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
 
 if(BUILD_TESTING)
