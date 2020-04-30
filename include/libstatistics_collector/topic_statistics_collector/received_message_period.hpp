@@ -124,8 +124,8 @@ private:
   /**
    * Default uninitialized time.
    */
-  rcl_time_point_value_t time_last_message_received_{kUninitializedTime}
-  RCPPUTILS_TSA_GUARDED_BY(mutex_);
+  rcl_time_point_value_t time_last_message_received_ RCPPUTILS_TSA_GUARDED_BY(mutex_) =
+    kUninitializedTime;
   mutable std::mutex mutex_;
 };
 
