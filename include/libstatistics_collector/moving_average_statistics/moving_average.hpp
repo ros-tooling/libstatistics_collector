@@ -126,11 +126,11 @@ public:
 
 private:
   mutable std::mutex mutex_;
-  double average_ = 0                              RCPPUTILS_TSA_GUARDED_BY(mutex_);
-  double min_ = std::numeric_limits<double>::max() RCPPUTILS_TSA_GUARDED_BY(mutex_);
-  double max_ = std::numeric_limits<double>::min() RCPPUTILS_TSA_GUARDED_BY(mutex_);
-  double sum_of_square_diff_from_mean_ = 0         RCPPUTILS_TSA_GUARDED_BY(mutex_);
-  uint64_t count_ = 0                              RCPPUTILS_TSA_GUARDED_BY(mutex_);
+  double average_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
+  double min_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = std::numeric_limits<double>::max();
+  double max_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = std::numeric_limits<double>::min();
+  double sum_of_square_diff_from_mean_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
+  uint64_t count_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
 };
 
 }  // namespace moving_average_statistics
