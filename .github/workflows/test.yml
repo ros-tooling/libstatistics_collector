@@ -49,11 +49,9 @@ jobs:
         path: ros_ws/log
 
   build_and_test_asan:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-          os: [ubuntu-18.04]
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:bionic
     steps:
     - uses: ros-tooling/setup-ros@0.0.20
     - uses: ros-tooling/action-ros-ci@0.0.16
@@ -63,7 +61,7 @@ jobs:
         package-name: libstatistics_collector
     - uses: actions/upload-artifact@v1
       with:
-        name: colcon-logs-${{ matrix.os }}-asan
+        name: colcon-logs-ubuntu-asan
         path: ros_ws/log
 
   log_workflow_status_to_cloudwatch:
