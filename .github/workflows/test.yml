@@ -27,9 +27,10 @@ jobs:
   build_and_test_ubuntu:
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:bionic
+      image: rostooling/setup-ros-docker:ubuntu-focal-latest
     steps:
-    - uses: ros-tooling/setup-ros@0.0.20
+    # TODO(setup-ros-docker#7): calling chown is necessary for now
+    - run: sudo chown -R rosbuild:rosbuild "$HOME" .
     - uses: ros-tooling/action-ros-ci@0.0.16
       with:
         package-name: libstatistics_collector
@@ -51,9 +52,10 @@ jobs:
   build_and_test_asan:
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:bionic
+      image: rostooling/setup-ros-docker:ubuntu-focal-latest
     steps:
-    - uses: ros-tooling/setup-ros@0.0.20
+    # TODO(setup-ros-docker#7): calling chown is necessary for now
+    - run: sudo chown -R rosbuild:rosbuild "$HOME" .
     - uses: ros-tooling/action-ros-ci@0.0.16
       with:
         colcon-mixin-name: asan
