@@ -13,3 +13,7 @@ This C++ library provides the following:
  Classes for calculating ROS 2 message age and message period statistics are
  also implemented.
 - A `MovingAverageStatistics` class for calculating moving average statistics
+
+## Quality Declaration
+
+This package claims to be in the Quality Level 4 category, see the [Quality Declaration](./QUALITY_DECLARATION.md) for more details.
