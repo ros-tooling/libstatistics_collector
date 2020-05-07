@@ -21,7 +21,7 @@ The current version can be found in its [package.xml](package.xml), and its chan
 
 All symbols in the installed headers are considered part of the public API.
 
-Except for the exclusions listed below, all installed headers are in the `include` directory of the package, headers in any other folders are not installed and considered private.
+All installed headers are in the `include` directory of the package, headers in any other folders are not installed and considered private.
 
 ### API Stability Policy [1.iv]
 
@@ -74,13 +74,13 @@ All pull requests must resolve related documentation changes before merging.
 
 ### Public API Documentation [3.ii]
 
-The API is not publicly available yet.
+The API documentation is not publicly available yet.
 
 ### License [3.iii]
 
 The license for `libstatistics_collector` is Apache 2.0, and a summary is in each source file, the type is declared in the [`package.xml`](./package.xml) manifest file, and a full copy of the license is in the [`LICENSE`](LICENSE) file.
 
-There is an automated test which runs a linter that ensures each file has a license statement. [Here](http://build.ros2.org/view/Epr/job/Epr__libstatistics_collector__ubuntu_bionic_amd64/lastCompletedBuild/testReport/libstatistics_collector/) can be found a list with the latest results of the various linters being run on the package.
+There is an automated test which runs a linter that ensures each file has a license statement. [Here](https://ci.ros2.org/job/nightly_linux_release/lastBuild/testReport/libstatistics_collector/) can be found a list with the latest results of the various linters being run on the package.
 
 ### Copyright Statements [3.iv]
 
@@ -176,7 +176,7 @@ It also has several test dependencies, which do not affect the resulting quality
 
 ### Direct Runtime non-ROS Dependency [5.iii]
 
-`libstatistics_collector` has no run-time or build-time dependencies that need to be considered for this declaration.
+`libstatistics_collector` has no non-ROS runtime or build-time dependencies that need to be considered for this declaration.
 
 ## Platform Support [6]
 
