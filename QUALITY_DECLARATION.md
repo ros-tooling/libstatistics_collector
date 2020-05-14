@@ -123,7 +123,7 @@ Each time that a new PR is created [codecov](https://codecov.io/) will create di
 
 ### Performance [4.iv]
 
-It is not yet defined if this package requires performance testing and how addresses this topic.
+`libstatistics_collector` does not conduct performance tests.
 
 ### Linters and Static Analysis [4.v]
 
