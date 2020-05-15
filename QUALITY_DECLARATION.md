@@ -25,15 +25,15 @@ All installed headers are in the `include` directory of the package, headers in 
 
 ### API Stability Policy [1.iv]
 
-`libstatistics_collector` will not break public API within a released ROS distribution, i.e. no major releases once the ROS distribution is released. If a breaking change is introduced, ROS2 distributions will pin to a specific major version.
+`libstatistics_collector` follows semver versioning semantics and will not make changes to its API without increasing its major version number.
 
 ### ABI Stability Policy [1.v]
 
-`libstatistics_collector` contains C++ code and therefore must be concerned with ABI stability, and will maintain ABI stability within a ROS distribution. If a breaking change is introduced, ROS2 distributions will pin to a specific major version.
+`libstatistics_collector` contains C and C++ code and is therefore concerned with ABI stability and will not change its ABI without increasing its major version number.
 
 ### ABI and ABI Stability Within a Released ROS Distribution [1.vi]
 
-`libstatistics_collector` will not break API nor ABI within a released ROS distribution, i.e. no major releases once the ROS distribution is released. If a breaking change is introduced, ROS2 distributions will pin to a specific major version.
+`libstatistics_collector` will not break API nor ABI within a released ROS distribution, i.e. no major releases once the ROS distribution is released.
 
 ## Change Control Process [2]
 
