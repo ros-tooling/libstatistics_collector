@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2020-05-27)
+------------------
 * Added quality declaration (`#21 <https://github.com/ros-tooling/libstatistics_collector/issues/21>`_)
   * Added quality declaration
   * Added feedback
