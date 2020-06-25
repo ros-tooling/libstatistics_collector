@@ -31,11 +31,15 @@ jobs:
     steps:
     # TODO(setup-ros-docker#7): calling chown is necessary for now
     - run: sudo chown -R rosbuild:rosbuild "$HOME" .
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
     - uses: ros-tooling/action-ros-ci@0.0.16
       with:
         package-name: libstatistics_collector
         colcon-mixin-name: coverage-gcc
         colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
     - uses: codecov/codecov-action@v1.0.6
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
