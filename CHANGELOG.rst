@@ -2,6 +2,23 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.1 (2020-05-27)
+------------------
+* Added quality declaration (`#21 <https://github.com/ros-tooling/libstatistics_collector/issues/21>`_)
+  * Added quality declaration
+  * Added feedback
+  * Fixed rep link
+  * Fixed QD
+  * added feedback
+  * Added feedback
+* Added Doxyfile (`#23 <https://github.com/ros-tooling/libstatistics_collector/issues/23>`_)
+* Run CI on Focal (`#20 <https://github.com/ros-tooling/libstatistics_collector/issues/20>`_)
+* Run lint worflow on Docker (`#19 <https://github.com/ros-tooling/libstatistics_collector/issues/19>`_)
+* Fix annotation syntax for thread safety attributes (`#18 <https://github.com/ros-tooling/libstatistics_collector/issues/18>`_)
+* Remove unused strategy matrix for ASAN CI job (`#17 <https://github.com/ros-tooling/libstatistics_collector/issues/17>`_)
+* Refactor workflow to extract CW reporting (`#15 <https://github.com/ros-tooling/libstatistics_collector/issues/15>`_)
+* Contributors: Alejandro Hernández Cordero, Emerson Knapp, Thomas Moulard
+
 1.0.0 (2020-04-29)
 ------------------
 * Bump actions versions (`#14 <https://github.com/ros-tooling/libstatistics_collector/issues/14>`_)
