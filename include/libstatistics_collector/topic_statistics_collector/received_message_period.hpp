@@ -57,7 +57,7 @@ public:
    * a lock to prevent race conditions when setting the time_last_message_received_ member.
    *
    * @param received_message
-   * @param time the message was received in nanoseconds
+   * @param now_nanoseconds time the message was received in nanoseconds
    */
   void OnMessageReceived(const T & received_message, const rcl_time_point_value_t now_nanoseconds)
   override RCPPUTILS_TSA_REQUIRES(mutex_)

@@ -47,7 +47,7 @@ public:
    * Add an observed measurement. This aggregates the measurement and calculates statistics
    * via the moving_average class.
    *
-   * @param the measurement observed
+   * @param measurement the measurement observed
    */
   LIBSTATISTICS_COLLECTOR_PUBLIC
   virtual void AcceptData(const double measurement);
