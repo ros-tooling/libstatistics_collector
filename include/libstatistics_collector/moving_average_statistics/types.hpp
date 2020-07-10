@@ -31,10 +31,15 @@ namespace moving_average_statistics
  */
 struct LIBSTATISTICS_COLLECTOR_PUBLIC StatisticData
 {
+  /// average of the observations
   double average = std::nan("");
+  /// min value of the observations
   double min = std::nan("");
+  /// max value of the observations
   double max = std::nan("");
+  /// standard_deviation of the observations
   double standard_deviation = std::nan("");
+  /// number of samples of the observation
   uint64_t sample_count = 0;
 };
 
