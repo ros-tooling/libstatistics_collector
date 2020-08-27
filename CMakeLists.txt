@@ -97,6 +97,7 @@ if(BUILD_TESTING)
 
   rosidl_generate_interfaces(libstatistics_collector_test_msgs
     "test/msg/DummyMessage.msg"
+    "test/msg/DummyCustomHeaderMessage.msg"
     DEPENDENCIES "std_msgs"
     SKIP_INSTALL)
 

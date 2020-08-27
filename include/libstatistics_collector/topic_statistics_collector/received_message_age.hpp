@@ -41,11 +41,12 @@ template<typename M, typename = void>
 struct HasHeader : public std::false_type {};
 
 /**
- * True if the message has a header
+ * True if the message has a header of type Header
  * @tparam M
  */
 template<typename M>
-struct HasHeader<M, decltype((void) M::header)>: std::true_type {};
+struct HasHeader<M, typename std::enable_if<std::is_same<Header,
+  decltype(M::header)>::value>::type>: std::true_type {};
 
 /**
  * Return a boolean flag indicating the timestamp is not set
