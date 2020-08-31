@@ -45,7 +45,7 @@ struct HasHeader : public std::false_type {};
  * @tparam M
  */
 template<typename M>
-struct HasHeader<M, typename std::enable_if<std::is_same<Header,
+struct HasHeader<M, typename std::enable_if<std::is_same<std_msgs::msg::Header,
   decltype(M::header)>::value>::type>: std::true_type {};
 
 /**
