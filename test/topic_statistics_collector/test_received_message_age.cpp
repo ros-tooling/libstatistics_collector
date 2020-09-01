@@ -70,7 +70,8 @@ TEST(ReceivedMessageAgeTest, TestOnlyMessagesWithHeaderGetSampled) {
   ReceivedDummyCustomHeaderMessageAgeCollector dummy_custom_header_msg_collector{};
   auto msg_custom_header = DummyCustomHeaderMessage{};
   for (int i = 0; i < kDefaultTimesToTest; ++i) {
-    dummy_custom_header_msg_collector.OnMessageReceived(msg_custom_header,
+    dummy_custom_header_msg_collector.OnMessageReceived(
+      msg_custom_header,
       kDefaultTimeMessageReceived);
     stats = dummy_custom_header_msg_collector.GetStatisticsResults();
     EXPECT_EQ(0, stats.sample_count) << "Expect 0 samples to be collected";
