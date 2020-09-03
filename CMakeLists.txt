@@ -51,7 +51,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 ament_target_dependencies(${PROJECT_NAME}
   "rcl"
   "rcpputils"
-  "statistics_msgs")
+  "statistics_msgs"
+  "std_msgs")
 
 install(
   TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}
@@ -63,7 +64,7 @@ install(
 ament_export_include_directories(include)
 ament_export_libraries(${PROJECT_NAME})
 ament_export_targets(${PROJECT_NAME})
-ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
+ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs" "std_msgs")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -89,7 +90,7 @@ if(BUILD_TESTING)
   ament_add_gtest(test_received_message_age
     test/topic_statistics_collector/test_received_message_age.cpp)
   target_link_libraries(test_received_message_age ${PROJECT_NAME})
-  ament_target_dependencies(test_received_message_age "rcl" "rcpputils")
+  ament_target_dependencies(test_received_message_age "rcl" "rcpputils" "std_msgs")
 
   rosidl_generate_interfaces(libstatistics_collector_test_msgs
     "test/msg/DummyMessage.msg"
