@@ -43,7 +43,7 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         yml: ./codecov.yml
-        fail_ci_if_error: true
+        fail_ci_if_error: false
     - uses: actions/upload-artifact@v1
       with:
         name: colcon-logs-${{ matrix.os }}
@@ -74,8 +74,8 @@ jobs:
     - build_and_test_macOS
     - build_and_test_ubuntu
     - build_and_test_asan
-    # - On a fork, we don't have the secrets to authenticate to AWS.
-    if: ${{ ! github.event.repository.fork && ! github.event.pull_request.head.repo.fork }}
+    # Don't skip if prior steps failed, but don't run on a fork because it won't have access to AWS secrets
+    if: ${{ always() && ! github.event.repository.fork && ! github.event.pull_request.head.repo.fork }}
     steps:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
