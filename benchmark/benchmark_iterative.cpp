@@ -77,6 +77,7 @@ public:
   }
 };
 
+// cppcheck-suppress unknownMacro
 BENCHMARK_DEFINE_F(PerformanceTest, collector_benchmark)(benchmark::State & st)
 {
   TestCollector collector;
@@ -91,8 +92,10 @@ BENCHMARK_DEFINE_F(PerformanceTest, collector_benchmark)(benchmark::State & st)
 
   collector.ClearCurrentMeasurements();
 }
+// cppcheck-suppress unknownMacro
 BENCHMARK_REGISTER_F(PerformanceTest, collector_benchmark);
 
+// cppcheck-suppress unknownMacro
 BENCHMARK_DEFINE_F(PerformanceTest, moving_average_statistics_benchmark)(benchmark::State & st)
 {
   MovingAverageStatistics moving_average_statistics;
@@ -107,4 +110,5 @@ BENCHMARK_DEFINE_F(PerformanceTest, moving_average_statistics_benchmark)(benchma
 
   moving_average_statistics.Reset();
 }
+// cppcheck-suppress unknownMacro
 BENCHMARK_REGISTER_F(PerformanceTest, moving_average_statistics_benchmark);
