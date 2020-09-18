@@ -36,14 +36,14 @@ jobs:
         package-name: libstatistics_collector
         colcon-mixin-name: coverage-gcc
         colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
-    - uses: codecov/codecov-action@v1.0.10
+    - uses: codecov/codecov-action@v1.0.13
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ros_ws/lcov/total_coverage.info
         flags: unittests
         name: codecov-umbrella
         yml: ./codecov.yml
-        fail_ci_if_error: true
+        fail_ci_if_error: false
     - uses: actions/upload-artifact@v1
       with:
         name: colcon-logs-${{ matrix.os }}
@@ -74,8 +74,8 @@ jobs:
     - build_and_test_macOS
     - build_and_test_ubuntu
     - build_and_test_asan
-    # - On a fork, we don't have the secrets to authenticate to AWS.
-    if: ${{ ! github.event.repository.fork && ! github.event.pull_request.head.repo.fork }}
+    # Don't skip if prior steps failed, but don't run on a fork because it won't have access to AWS secrets
+    if: ${{ always() && ! github.event.repository.fork && ! github.event.pull_request.head.repo.fork }}
     steps:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -83,7 +83,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
-    - uses: ros-tooling/action-cloudwatch-metrics@0.0.4
+    - uses: ros-tooling/action-cloudwatch-metrics@0.0.5
       with:
         # Checks if any of the jobs have failed.
         #
