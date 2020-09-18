@@ -83,6 +83,8 @@ BENCHMARK_DEFINE_F(PerformanceTest, collector_benchmark)(benchmark::State & st)
   TestCollector collector;
   const size_t len = kSize;
 
+  reset_heap_counters();
+
   for (auto _ : st) {
     for (unsigned int i = 0; i < len; i++) {
       collector.AcceptData(i);
@@ -100,6 +102,8 @@ BENCHMARK_DEFINE_F(PerformanceTest, moving_average_statistics_benchmark)(benchma
 {
   MovingAverageStatistics moving_average_statistics;
   const size_t len = kSize;
+
+  reset_heap_counters();
 
   for (auto _ : st) {
     for (unsigned int i = 0; i < len; i++) {
