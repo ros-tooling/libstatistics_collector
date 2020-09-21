@@ -25,7 +25,6 @@ using libstatistics_collector::collector::Collector;
 
 namespace
 {
-constexpr const uint64_t kSize = 4096;
 constexpr const char kTestMetricName[] = "test_metric_name";
 constexpr const char kTestMetricUnit[] = "test_metric_unit";
 }
@@ -78,41 +77,28 @@ public:
 };
 
 // cppcheck-suppress unknownMacro
-BENCHMARK_DEFINE_F(PerformanceTest, collector_benchmark)(benchmark::State & st)
+BENCHMARK_DEFINE_F(PerformanceTest, collector_accept_data)(benchmark::State & st)
 {
   TestCollector collector;
-  const size_t len = kSize;
-
-  reset_heap_counters();
 
   for (auto _ : st) {
-    for (unsigned int i = 0; i < len; i++) {
-      collector.AcceptData(i);
-    }
+    collector.AcceptData(0);
   }
-  st.SetComplexityN(len);
-
   collector.ClearCurrentMeasurements();
 }
 // cppcheck-suppress unknownMacro
-BENCHMARK_REGISTER_F(PerformanceTest, collector_benchmark);
+BENCHMARK_REGISTER_F(PerformanceTest, collector_accept_data);
 
 // cppcheck-suppress unknownMacro
-BENCHMARK_DEFINE_F(PerformanceTest, moving_average_statistics_benchmark)(benchmark::State & st)
+BENCHMARK_DEFINE_F(PerformanceTest, add_measurement)(benchmark::State & st)
 {
   MovingAverageStatistics moving_average_statistics;
-  const size_t len = kSize;
-
-  reset_heap_counters();
 
   for (auto _ : st) {
-    for (unsigned int i = 0; i < len; i++) {
-      moving_average_statistics.AddMeasurement(i);
-    }
+    moving_average_statistics.AddMeasurement(0);
   }
-  st.SetComplexityN(len);
 
   moving_average_statistics.Reset();
 }
 // cppcheck-suppress unknownMacro
-BENCHMARK_REGISTER_F(PerformanceTest, moving_average_statistics_benchmark);
+BENCHMARK_REGISTER_F(PerformanceTest, add_measurement);
