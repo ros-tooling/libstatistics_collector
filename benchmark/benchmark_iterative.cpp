@@ -84,7 +84,6 @@ BENCHMARK_DEFINE_F(PerformanceTest, collector_accept_data)(benchmark::State & st
   for (auto _ : st) {
     collector.AcceptData(0);
   }
-  collector.ClearCurrentMeasurements();
 }
 // cppcheck-suppress unknownMacro
 BENCHMARK_REGISTER_F(PerformanceTest, collector_accept_data);
@@ -97,8 +96,6 @@ BENCHMARK_DEFINE_F(PerformanceTest, add_measurement)(benchmark::State & st)
   for (auto _ : st) {
     moving_average_statistics.AddMeasurement(0);
   }
-
-  moving_average_statistics.Reset();
 }
 // cppcheck-suppress unknownMacro
 BENCHMARK_REGISTER_F(PerformanceTest, add_measurement);
