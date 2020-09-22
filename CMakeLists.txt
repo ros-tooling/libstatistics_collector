@@ -99,7 +99,7 @@ if(BUILD_TESTING)
   # To enable use of dummy_message.hpp in test_received_message_age
   rosidl_target_interfaces(test_received_message_age libstatistics_collector_test_msgs "rosidl_typesupport_cpp")
 
-  add_performance_test(benchmark_iterative benchmark/benchmark_iterative.cpp)
+  add_performance_test(benchmark_iterative test/benchmark/benchmark_iterative.cpp)
   if(TARGET benchmark_iterative)
     target_include_directories(benchmark_iterative PUBLIC include)
     target_link_libraries(benchmark_iterative ${PROJECT_NAME})
