@@ -68,6 +68,7 @@ ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   find_package(ament_cmake_gtest REQUIRED)
+  find_package(performance_test_fixture REQUIRED)
 
   ament_lint_auto_find_test_dependencies()
 
@@ -97,6 +98,11 @@ if(BUILD_TESTING)
 
   # To enable use of dummy_message.hpp in test_received_message_age
   rosidl_target_interfaces(test_received_message_age libstatistics_collector_test_msgs "rosidl_typesupport_cpp")
+
+  add_performance_test(benchmark_iterative test/benchmark/benchmark_iterative.cpp)
+  if(TARGET benchmark_iterative)
+    target_link_libraries(benchmark_iterative ${PROJECT_NAME})
+  endif()
 endif()
 
 install(
