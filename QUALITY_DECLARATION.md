@@ -123,7 +123,7 @@ Each time that a new PR is created [codecov](https://codecov.io/) will create di
 
 ### Performance [4.iv]
 
-`libstatistics_collector` does not conduct performance tests.
+The performance tests of this package are located in the [test/benchmark directory](https://github.com/ros-tooling/libstatistics_collector/tree/master/test/benchmark). The most recent test results can be found [here](http://build.ros2.org/view/Rci/job/Rci__benchmark_ubuntu_focal_amd64/BenchmarkTable/).
 
 ### Linters and Static Analysis [4.v]
 
