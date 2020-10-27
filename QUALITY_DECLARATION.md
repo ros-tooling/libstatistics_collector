@@ -70,7 +70,7 @@ All pull requests must resolve related documentation changes before merging.
 
 ### Feature Documentation [3.i]
 
-`libstatistics_collector` has a [feature list](https://github.com/ros-tooling/libstatistics_collector/blob/master/README.md) and each item in the list links to the corresponding feature documentation. There is documentation for all of the features, and new features require documentation before being added.
+`libstatistics_collector` has a [feature list](https://github.com/ros-tooling/libstatistics_collector/blob/foxy-devel/README.md) and each item in the list links to the corresponding feature documentation. There is documentation for all of the features, and new features require documentation before being added.
 
 ### Public API Documentation [3.ii]
 
@@ -92,7 +92,7 @@ There is an automated test which runs a linter that ensures each file has at lea
 
 ### Feature Testing [4.i]
 
-Each feature in `libstatistics_collector` has corresponding tests which simulate typical usage, and they are located in the [`test`](https://github.com/ros2/libstatistics_collector/tree/master/test) directory.
+Each feature in `libstatistics_collector` has corresponding tests which simulate typical usage, and they are located in the [`test`](https://github.com/ros-tooling/libstatistics_collector/tree/foxy-devel/test) directory.
 New features are required to have tests before being added.
 
 Currently nightly test results can be seen here:
@@ -123,7 +123,7 @@ Each time that a new PR is created [codecov](https://codecov.io/) will create di
 
 ### Performance [4.iv]
 
-The performance tests of this package are located in the [test/benchmark directory](https://github.com/ros-tooling/libstatistics_collector/tree/master/test/benchmark). The most recent test results can be found [here](http://build.ros2.org/view/Rci/job/Rci__benchmark_ubuntu_focal_amd64/BenchmarkTable/).
+The performance tests of this package are located in the [test/benchmark directory](https://github.com/ros-tooling/libstatistics_collector/tree/foxy-devel/test/benchmark). The most recent test results can be found [here](http://build.ros2.org/view/Fci/job/Fci__benchmark_ubuntu_focal_amd64/BenchmarkTable/).
 
 ### Linters and Static Analysis [4.v]
 
@@ -145,31 +145,31 @@ Currently nightly test results can be seen here:
 
 The `rcl` package supports implementation of language specific ROS Client Libraries.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rcl/blob/master/rcl/QUALITY_DECLARATION.md).
+It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rcl/blob/foxy-devel/rcl/QUALITY_DECLARATION.md).
 
 #### `rcpputils`
 
 The `rcpputils` package is a C++ API consisting of macros, functions, and data structures intended for use throughout the ROS 2 codebase.
 
-It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/master/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/foxy-devel/QUALITY_DECLARATION.md).
 
 #### `rosidl_default_runtime`
 
 The `rosidl_default_runtime` provides CMake functionality for finding and adding runtime dependencies for rosidl packages.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/master/rosidl_default_runtime/QUALITY_DECLARATION.md).
+It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/foxy-devel/rosidl_default_runtime/QUALITY_DECLARATION.md).
 
 #### `statistics_msgs`
 
 The `statistics_msgs` package contains ROS 2 message definitions for reporting statistics for topics and system resources.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/master/statistics_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/foxy-devel/statistics_msgs/QUALITY_DECLARATION.md).
 
 #### `std_msgs`
 
 The `std_msgs` package provides many basic message types.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/master/std_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/foxy-devel/std_msgs/QUALITY_DECLARATION.md).
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 It also has several test dependencies, which do not affect the resulting quality of the package, because they are only used to build and run the test code.
