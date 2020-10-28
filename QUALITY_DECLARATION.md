@@ -157,19 +157,19 @@ It is **Quality Level 2**, see its [Quality Declaration document](https://github
 
 The `rosidl_default_runtime` provides CMake functionality for finding and adding runtime dependencies for rosidl packages.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md).
 
 #### `statistics_msgs`
 
 The `statistics_msgs` package contains ROS 2 message definitions for reporting statistics for topics and system resources.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/foxy/statistics_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/foxy/statistics_msgs/QUALITY_DECLARATION.md).
 
 #### `std_msgs`
 
 The `std_msgs` package provides many basic message types.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/foxy/std_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/foxy/std_msgs/QUALITY_DECLARATION.md).
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 It also has several test dependencies, which do not affect the resulting quality of the package, because they are only used to build and run the test code.
