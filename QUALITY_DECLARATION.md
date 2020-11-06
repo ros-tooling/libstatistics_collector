@@ -2,7 +2,7 @@ This document is a declaration of software quality for the `libstatistics_collec
 
 # `libstatistics_collector` Quality Declaration
 
-The package `libstatistics_collector` claims to be in the **Quality Level 3** category.
+The package `libstatistics_collector` claims to be in the **Quality Level 2** category.
 
 Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Quality Categories in REP-2004](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#package-quality-categories) of the ROS2 developer guide.
 
@@ -145,7 +145,7 @@ Currently nightly test results can be seen here:
 
 The `rcl` package supports implementation of language specific ROS Client Libraries.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rcl/blob/master/rcl/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcl/blob/master/rcl/QUALITY_DECLARATION.md).
 
 #### `rcpputils`
 
@@ -157,19 +157,19 @@ It is **Quality Level 2**, see its [Quality Declaration document](https://github
 
 The `rosidl_default_runtime` provides CMake functionality for finding and adding runtime dependencies for rosidl packages.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/master/rosidl_default_runtime/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/master/rosidl_default_runtime/QUALITY_DECLARATION.md).
 
 #### `statistics_msgs`
 
 The `statistics_msgs` package contains ROS 2 message definitions for reporting statistics for topics and system resources.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/master/statistics_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/master/statistics_msgs/QUALITY_DECLARATION.md).
 
 #### `std_msgs`
 
 The `std_msgs` package provides many basic message types.
 
-It is **Quality Level 3**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/master/std_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/master/std_msgs/QUALITY_DECLARATION.md).
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 It also has several test dependencies, which do not affect the resulting quality of the package, because they are only used to build and run the test code.
