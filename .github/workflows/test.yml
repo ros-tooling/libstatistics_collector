@@ -30,8 +30,6 @@ jobs:
     container:
       image: rostooling/setup-ros-docker:ubuntu-focal-latest
     steps:
-    # TODO(setup-ros-docker#7): calling chown is necessary for now
-    - run: sudo chown -R rosbuild:rosbuild "$HOME" .
     - uses: ros-tooling/action-ros-ci@0.1.0
       with:
         package-name: libstatistics_collector
@@ -56,8 +54,6 @@ jobs:
     container:
       image: rostooling/setup-ros-docker:ubuntu-focal-latest
     steps:
-    # TODO(setup-ros-docker#7): calling chown is necessary for now
-    - run: sudo chown -R rosbuild:rosbuild "$HOME" .
     - uses: ros-tooling/action-ros-ci@0.1.0
       with:
         colcon-mixin-name: asan
