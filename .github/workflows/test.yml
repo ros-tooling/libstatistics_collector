@@ -14,11 +14,12 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: ros-tooling/setup-ros@0.0.26
-    - uses: ros-tooling/action-ros-ci@0.0.17
+    - uses: ros-tooling/action-ros-ci@0.1.0
       with:
         package-name: libstatistics_collector
         colcon-mixin-name: coverage-gcc
         colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+        target-ros2-distro: foxy
     - uses: actions/upload-artifact@v1
       with:
         name: colcon-logs-${{ matrix.os }}
@@ -31,11 +32,12 @@ jobs:
     steps:
     # TODO(setup-ros-docker#7): calling chown is necessary for now
     - run: sudo chown -R rosbuild:rosbuild "$HOME" .
-    - uses: ros-tooling/action-ros-ci@0.0.17
+    - uses: ros-tooling/action-ros-ci@0.1.0
       with:
         package-name: libstatistics_collector
         colcon-mixin-name: coverage-gcc
         colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+        target-ros2-distro: foxy
     - uses: codecov/codecov-action@v1.0.14
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
@@ -56,11 +58,12 @@ jobs:
     steps:
     # TODO(setup-ros-docker#7): calling chown is necessary for now
     - run: sudo chown -R rosbuild:rosbuild "$HOME" .
-    - uses: ros-tooling/action-ros-ci@0.0.17
+    - uses: ros-tooling/action-ros-ci@0.1.0
       with:
         colcon-mixin-name: asan
         colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
         package-name: libstatistics_collector
+        target-ros2-distro: foxy
     - uses: actions/upload-artifact@v1
       with:
         name: colcon-logs-ubuntu-asan
