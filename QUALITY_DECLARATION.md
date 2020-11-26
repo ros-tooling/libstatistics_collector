@@ -2,7 +2,7 @@ This document is a declaration of software quality for the `libstatistics_collec
 
 # `libstatistics_collector` Quality Declaration
 
-The package `libstatistics_collector` claims to be in the **Quality Level 2** category.
+The package `libstatistics_collector` claims to be in the **Quality Level 1** category when it is used with a **Quality Level 1** middleware.
 
 Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Quality Categories in REP-2004](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#package-quality-categories) of the ROS2 developer guide.
 
@@ -123,7 +123,15 @@ Each time that a new PR is created [codecov](https://codecov.io/) will create di
 
 ### Performance [4.iv]
 
-The performance tests of this package are located in the [test/benchmark directory](https://github.com/ros-tooling/libstatistics_collector/tree/foxy-devel/test/benchmark). The most recent test results can be found [here](http://build.ros2.org/view/Fci/job/Fci__benchmark_ubuntu_focal_amd64/BenchmarkTable/).
+`libstatistics_collector` follows the recommendations for performance testing of C/C++ code in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#performance), and opts to do performance analysis on each release rather than each change.
+
+The performance tests of this package are located in the [test/benchmark directory](https://github.com/ros-tooling/libstatistics_collector/tree/foxy/test/benchmark).
+
+Package and system level performance benchmarks that cover features of `libstatistics_collector` can be found at:
+* [Benchmarks](http://build.ros2.org/view/Fci/job/Fci__benchmark_ubuntu_focal_amd64/BenchmarkTable/)
+* [Performance](http://build.ros2.org/view/Fci/job/Fci__nightly-performance_ubuntu_focal_amd64/lastCompletedBuild/)
+
+Changes that introduce regressions in performance must be adequately justified in order to be accepted and merged.
 
 ### Linters and Static Analysis [4.v]
 
@@ -145,31 +153,31 @@ Currently nightly test results can be seen here:
 
 The `rcl` package supports implementation of language specific ROS Client Libraries.
 
-It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcl/blob/foxy/rcl/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcl/blob/foxy/rcl/QUALITY_DECLARATION.md).
 
 #### `rcpputils`
 
 The `rcpputils` package is a C++ API consisting of macros, functions, and data structures intended for use throughout the ROS 2 codebase.
 
-It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/foxy/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/foxy/QUALITY_DECLARATION.md).
 
 #### `rosidl_default_runtime`
 
 The `rosidl_default_runtime` provides CMake functionality for finding and adding runtime dependencies for rosidl packages.
 
-It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rosidl_defaults/blob/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md).
 
 #### `statistics_msgs`
 
 The `statistics_msgs` package contains ROS 2 message definitions for reporting statistics for topics and system resources.
 
-It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/foxy/statistics_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcl_interfaces/blob/foxy/statistics_msgs/QUALITY_DECLARATION.md).
 
 #### `std_msgs`
 
 The `std_msgs` package provides many basic message types.
 
-It is **Quality Level 2**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/foxy/std_msgs/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/common_interfaces/blob/foxy/std_msgs/QUALITY_DECLARATION.md).
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 It also has several test dependencies, which do not affect the resulting quality of the package, because they are only used to build and run the test code.
