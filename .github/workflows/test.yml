@@ -13,7 +13,7 @@ jobs:
   build_and_test_macOS:
     runs-on: macOS-latest
     steps:
-    - uses: ros-tooling/setup-ros@0.0.26
+    - uses: ros-tooling/setup-ros@0.1.0
     - uses: ros-tooling/action-ros-ci@0.1.0
       with:
         package-name: libstatistics_collector
