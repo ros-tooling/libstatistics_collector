@@ -2,6 +2,42 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix: measured values after the decimal point are truncated `#79 <https://github.com/ros-tooling/libstatistics_collector/issues/79>`_ (`#80 <https://github.com/ros-tooling/libstatistics_collector/issues/80>`_)
+* Update linter to run on rolling+focal (`#81 <https://github.com/ros-tooling/libstatistics_collector/issues/81>`_)
+* Add automerge.yml config file (`#70 <https://github.com/ros-tooling/libstatistics_collector/issues/70>`_)
+* Update QD to QL 1 (`#68 <https://github.com/ros-tooling/libstatistics_collector/issues/68>`_)
+* Updated QD (`#64 <https://github.com/ros-tooling/libstatistics_collector/issues/64>`_)
+* Updated QD Performance tests (`#58 <https://github.com/ros-tooling/libstatistics_collector/issues/58>`_)
+* Added benchmark test to libstatistics_collector (`#57 <https://github.com/ros-tooling/libstatistics_collector/issues/57>`_)
+  * Added benchmark test to libstatistics_collector
+  * cppcheck supressed unknown macro warning - macos
+  * Reset heap counters
+  * Added feedback
+  * Remove unknownMacro suppression from CMakeLists.txt
+  * Added feedback
+  * moved benchmark test to test/benchmark
+  * Added feedback
+  Co-authored-by: Devin Bonnie <47613035+dabonnie@users.noreply.github.com>
+* Report failed workflows (`#56 <https://github.com/ros-tooling/libstatistics_collector/issues/56>`_)
+  Allow codecov failures to be silent
+* Add default CODEOWNERS file (`#55 <https://github.com/ros-tooling/libstatistics_collector/issues/55>`_)
+* Remove repo activity from individual repositories in favor of centralized reporting (`#52 <https://github.com/ros-tooling/libstatistics_collector/issues/52>`_)
+* Don't attempt to report if originating from a fork (`#43 <https://github.com/ros-tooling/libstatistics_collector/issues/43>`_)
+* Removed doxygen warnings (`#41 <https://github.com/ros-tooling/libstatistics_collector/issues/41>`_)
+  Co-authored-by: Anas Abou Allaban <allabana@amazon.com>
+* Add autoapprove action for dependabot (`#40 <https://github.com/ros-tooling/libstatistics_collector/issues/40>`_)
+* Create Dependabot config file (`#31 <https://github.com/ros-tooling/libstatistics_collector/issues/31>`_)
+  * Create Dependabot config file
+  * Randomize time of run
+  Co-authored-by: dependabot-preview[bot] <27856297+dependabot-preview[bot]@users.noreply.github.com>
+  Co-authored-by: Prajakta Gokhale <prajaktg@amazon.com>
+* Updated QD to 3 (`#30 <https://github.com/ros-tooling/libstatistics_collector/issues/30>`_)
+* Add Security Vulnerability Policy pointing to REP-2006. (`#24 <https://github.com/ros-tooling/libstatistics_collector/issues/24>`_)
+  Co-authored-by: Emerson Knapp <537409+emersonknapp@users.noreply.github.com>
+* Contributors: Alejandro Hernández Cordero, Chris Lalancette, Devin Bonnie, Emerson Knapp, Lucas Han, Prajakta Gokhale, Stephen Brawner, hsgwa
+
 1.0.1 (2020-05-27)
 ------------------
 * Added quality declaration (`#21 <https://github.com/ros-tooling/libstatistics_collector/issues/21>`_)
