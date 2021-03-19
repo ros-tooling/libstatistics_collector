@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.0 (2021-03-19)
+------------------
 * fix: measured values after the decimal point are truncated `#79 <https://github.com/ros-tooling/libstatistics_collector/issues/79>`_ (`#80 <https://github.com/ros-tooling/libstatistics_collector/issues/80>`_)
 * Update linter to run on rolling+focal (`#81 <https://github.com/ros-tooling/libstatistics_collector/issues/81>`_)
 * Add automerge.yml config file (`#70 <https://github.com/ros-tooling/libstatistics_collector/issues/70>`_)
