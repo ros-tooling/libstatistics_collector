@@ -14,12 +14,17 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: ros-tooling/setup-ros@v0.1
-    - uses: ros-tooling/action-ros-ci@v0.1
+    - uses: ros-tooling/action-ros-ci@v0.2
       with:
         package-name: libstatistics_collector
-        colcon-mixin-name: coverage-gcc
-        colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
-        target-ros2-distro: foxy
+        colcon-defaults: |
+          {
+            "build": {
+              "mixin": ["coverage-gcc"]
+            }
+          }
+        target-ros2-distro: rolling
+        vcs-repo-file-url: https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
     - uses: actions/upload-artifact@v1
       with:
         name: colcon-logs-${{ matrix.os }}
