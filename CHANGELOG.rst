@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.1 (2021-08-05)
+------------------
 * Remove cloudwatch reporting (`#110 <https://github.com/ros-tooling/libstatistics_collector/issues/110>`_)
 * Replace index.ros.org links -> docs.ros.org. (`#94 <https://github.com/ros-tooling/libstatistics_collector/issues/94>`_)
 * Use latest versions of CI actions (`#92 <https://github.com/ros-tooling/libstatistics_collector/issues/92>`_)
