@@ -2,6 +2,13 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove cloudwatch reporting (`#110 <https://github.com/ros-tooling/libstatistics_collector/issues/110>`_)
+* Replace index.ros.org links -> docs.ros.org. (`#94 <https://github.com/ros-tooling/libstatistics_collector/issues/94>`_)
+* Use latest versions of CI actions (`#92 <https://github.com/ros-tooling/libstatistics_collector/issues/92>`_)
+* Contributors: Chris Lalancette, Emerson Knapp
+
 1.1.0 (2021-03-19)
 ------------------
 * fix: measured values after the decimal point are truncated `#79 <https://github.com/ros-tooling/libstatistics_collector/issues/79>`_ (`#80 <https://github.com/ros-tooling/libstatistics_collector/issues/80>`_)
