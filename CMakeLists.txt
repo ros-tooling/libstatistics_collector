@@ -45,8 +45,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "LIBSTATISTICS_COLLECTOR_BUIL
 
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>"
-  "$<INSTALL_INTERFACE:include>")
+  "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
 ament_target_dependencies(${PROJECT_NAME}
   "rcl"
@@ -60,9 +59,13 @@ install(
   RUNTIME DESTINATION bin
 )
 
-ament_export_include_directories(include)
+# Export old-style CMake variables
+ament_export_include_directories("include/${PROJECT_NAME}")
 ament_export_libraries(${PROJECT_NAME})
+
+# Export modern CMake targets
 ament_export_targets(${PROJECT_NAME})
+
 ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
 
 if(BUILD_TESTING)
@@ -94,7 +97,8 @@ if(BUILD_TESTING)
 
   rosidl_generate_interfaces(libstatistics_collector_test_msgs
     "test/msg/DummyMessage.msg"
-    DEPENDENCIES "std_msgs")
+    DEPENDENCIES "std_msgs"
+    SKIP_INSTALL)
 
   # To enable use of dummy_message.hpp in test_received_message_age
   rosidl_get_typesupport_target(cpp_typesupport_target libstatistics_collector_test_msgs "rosidl_typesupport_cpp")
@@ -108,7 +112,7 @@ endif()
 
 install(
   DIRECTORY include/
-  DESTINATION include
+  DESTINATION include/${PROJECT_NAME}
 )
 
 ament_package()
