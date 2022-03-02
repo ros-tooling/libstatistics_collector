@@ -12,7 +12,7 @@ jobs:
       matrix:
         linter: [copyright, cppcheck, cpplint, flake8, pep257, uncrustify, xmllint]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ros-tooling/action-ros-lint@v0.1
         with:
           linter: ${{ matrix.linter }}
