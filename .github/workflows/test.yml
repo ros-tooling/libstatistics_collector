@@ -25,7 +25,7 @@ jobs:
           }
         target-ros2-distro: rolling
         vcs-repo-file-url: https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
-    - uses: actions/upload-artifact@v2.3.1
+    - uses: actions/upload-artifact@v3
       with:
         name: colcon-logs-${{ matrix.os }}
         path: ros_ws/log
@@ -49,7 +49,7 @@ jobs:
         name: codecov-umbrella
         yml: ./codecov.yml
         fail_ci_if_error: false
-    - uses: actions/upload-artifact@v2.3.1
+    - uses: actions/upload-artifact@v3
       with:
         name: colcon-logs-${{ matrix.os }}
         path: ros_ws/log
@@ -65,7 +65,7 @@ jobs:
         colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
         package-name: libstatistics_collector
         target-ros2-distro: foxy
-    - uses: actions/upload-artifact@v2.3.1
+    - uses: actions/upload-artifact@v3
       with:
         name: colcon-logs-ubuntu-asan
         path: ros_ws/log
