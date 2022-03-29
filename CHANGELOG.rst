@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.0 (2022-03-29)
+------------------
 * Bump pascalgn/automerge-action from 0.14.3 to 0.15.2
 * Bump ros-tooling/setup-ros from 0.2.2 to 0.3.0
 * Bump actions/upload-artifact from 2.3.1 to 3
