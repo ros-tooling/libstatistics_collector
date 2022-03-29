@@ -2,6 +2,37 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump pascalgn/automerge-action from 0.14.3 to 0.15.2
+* Bump ros-tooling/setup-ros from 0.2.2 to 0.3.0
+* Bump actions/upload-artifact from 2.3.1 to 3
+* Bump actions/upload-artifact from 2.2.4 to 2.3.1
+* Bump actions/checkout from 2 to 3
+* Bump ros-tooling/setup-ros from 0.2.1 to 0.2.2 (`#123 <https://github.com/ros-tooling/libstatistics_collector/issues/123>`_)
+* Install includes to include/${PROJECT_NAME} (`#122 <https://github.com/ros-tooling/libstatistics_collector/issues/122>`_)
+* Bump codecov/codecov-action from 2.0.3 to 2.1.0
+* Bump pascalgn/automerge-action from 0.14.2 to 0.14.3
+* Bump codecov/codecov-action from 2.0.2 to 2.0.3
+* Use rosidl_get_typesupport_target() (`#116 <https://github.com/ros-tooling/libstatistics_collector/issues/116>`_)
+* Bump codecov/codecov-action from 2.0.1 to 2.0.2
+* Bump codecov/codecov-action from 1.5.2 to 2.0.1
+* Bump actions/upload-artifact from 1 to 2.2.4
+* Bump codecov/codecov-action from 1.5.1 to 1.5.2
+* Remove cloudwatch reporting (`#110 <https://github.com/ros-tooling/libstatistics_collector/issues/110>`_)
+* Bump codecov/codecov-action from 1.3.1 to 1.5.1
+* Bump ros-tooling/setup-ros from 0.2.0 to 0.2.1
+* Bump pascalgn/automerge-action from 0.14.1 to 0.14.2
+* Bump ros-tooling/setup-ros from 0.1 to 0.2.0
+* Bump pascalgn/automerge-action from 0.13.1 to 0.14.1
+* Fix autoapprove
+* Package.json explicitly owned by emerson to minimize notifications
+* Replace index.ros.org links -> docs.ros.org. (`#94 <https://github.com/ros-tooling/libstatistics_collector/issues/94>`_)
+* Bump hmarr/auto-approve-action from v2.0.0 to v2.1.0
+* Bump codecov/codecov-action from v1.2.1 to v1.3.1
+* Use latest versions of CI actions (`#92 <https://github.com/ros-tooling/libstatistics_collector/issues/92>`_)
+* Contributors: Chris Lalancette, Emerson Knapp, Shane Loretz, dependabot[bot]
+
 1.1.0 (2021-03-19)
 ------------------
 * fix: measured values after the decimal point are truncated `#79 <https://github.com/ros-tooling/libstatistics_collector/issues/79>`_ (`#80 <https://github.com/ros-tooling/libstatistics_collector/issues/80>`_)
