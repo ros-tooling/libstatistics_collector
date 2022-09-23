@@ -15,7 +15,6 @@
   <depend>rcl</depend>
   <depend>rcpputils</depend>
   <depend>statistics_msgs</depend>
-  <depend>std_msgs</depend>
 
   <exec_depend>rosidl_default_runtime</exec_depend>
 
@@ -23,6 +22,7 @@
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
   <test_depend>performance_test_fixture</test_depend>
+  <test_depend>std_msgs</test_depend>
 
   <member_of_group>rosidl_interface_packages</member_of_group>
 

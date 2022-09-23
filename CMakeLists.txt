@@ -33,7 +33,6 @@ find_package(rcl REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(statistics_msgs REQUIRED)
-find_package(std_msgs REQUIRED)
 
 add_library(${PROJECT_NAME}
   src/libstatistics_collector/collector/collector.cpp
@@ -51,7 +50,7 @@ ament_target_dependencies(${PROJECT_NAME}
   "rcl"
   "rcpputils"
   "statistics_msgs"
-  "std_msgs")
+)
 
 install(
   TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}
@@ -67,12 +66,13 @@ ament_export_libraries(${PROJECT_NAME})
 # Export modern CMake targets
 ament_export_targets(${PROJECT_NAME})
 
-ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs" "std_msgs")
+ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   find_package(ament_cmake_gtest REQUIRED)
   find_package(performance_test_fixture REQUIRED)
+  find_package(std_msgs REQUIRED)
 
   ament_lint_auto_find_test_dependencies()
 

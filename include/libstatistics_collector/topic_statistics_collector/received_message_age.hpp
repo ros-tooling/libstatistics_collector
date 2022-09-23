@@ -27,7 +27,6 @@
 
 #include "rcl/time.h"
 #include "rcutils/logging_macros.h"
-#include "std_msgs/msg/header.hpp"
 
 namespace libstatistics_collector
 {
@@ -35,19 +34,18 @@ namespace topic_statistics_collector
 {
 
 /**
+ * True if the message has a header with a subfield stamp
+ * @tparam M
+ */
+template<typename M, typename D = decltype(M().header.stamp)>
+struct HasHeader : public std::true_type {};
+
+/**
  * False if the message does not have a header
  * @tparam M
  */
-template<typename M, typename = void>
-struct HasHeader : public std::false_type {};
-
-/**
- * True if the message has a header of type Header
- * @tparam M
- */
 template<typename M>
-struct HasHeader<M, typename std::enable_if<std::is_same<std_msgs::msg::Header,
-  decltype(M::header)>::value>::type>: std::true_type {};
+struct HasHeader<M, void>: public std::false_type {};
 
 /**
  * Return a boolean flag indicating the timestamp is not set
