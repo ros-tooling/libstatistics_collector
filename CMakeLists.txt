@@ -29,6 +29,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_ros REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 find_package(rcl REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
@@ -47,6 +48,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
 ament_target_dependencies(${PROJECT_NAME}
+  "builtin_interfaces"
   "rcl"
   "rcpputils"
   "statistics_msgs"
@@ -66,7 +68,7 @@ ament_export_libraries(${PROJECT_NAME})
 # Export modern CMake targets
 ament_export_targets(${PROJECT_NAME})
 
-ament_export_dependencies("rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
+ament_export_dependencies("builtin_interfaces" "rcl" "rcpputils" "rosidl_default_runtime" "statistics_msgs")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
