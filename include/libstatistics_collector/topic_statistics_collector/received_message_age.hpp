@@ -43,13 +43,12 @@ struct HasHeader : public std::false_type {};
 
 /**
  * True if the message has a field named 'header' with a subfield named 'stamp' of
- * type builtin_interfaces::msg::Time, along with a subfield named 'frame_id' of type std::string
+ * type builtin_interfaces::msg::Time
  * @tparam M
  */
 template<typename M>
 struct HasHeader<M, typename std::enable_if<std::is_same<builtin_interfaces::msg::Time,
-  decltype(M().header.stamp)>::value &&
-  std::is_same<std::string, decltype(M().header.frame_id)>::value>::type>: public std::true_type {};
+  decltype(M().header.stamp)>::value>::type>: public std::true_type {};
 
 /**
  * Return a boolean flag indicating the timestamp is not set
