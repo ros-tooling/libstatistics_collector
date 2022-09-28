@@ -27,7 +27,6 @@
 
 #include "builtin_interfaces/msg/time.hpp"
 #include "rcl/time.h"
-#include "rcutils/logging_macros.h"
 
 namespace libstatistics_collector
 {
