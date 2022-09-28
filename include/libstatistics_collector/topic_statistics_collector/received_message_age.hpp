@@ -25,6 +25,7 @@
 
 #include "libstatistics_collector/topic_statistics_collector/topic_statistics_collector.hpp"
 
+#include "builtin_interfaces/msg/time.hpp"
 #include "rcl/time.h"
 #include "rcutils/logging_macros.h"
 
@@ -41,11 +42,13 @@ template<typename M, typename = void>
 struct HasHeader : public std::false_type {};
 
 /**
- * True if the message has a header
+ * True if the message has a field named 'header' with a subfield named 'stamp' of
+ * type builtin_interfaces::msg::Time
  * @tparam M
  */
 template<typename M>
-struct HasHeader<M, decltype((void) M::header)>: std::true_type {};
+struct HasHeader<M, typename std::enable_if<std::is_same<builtin_interfaces::msg::Time,
+  decltype(M().header.stamp)>::value>::type>: public std::true_type {};
 
 /**
  * Return a boolean flag indicating the timestamp is not set
