@@ -3,7 +3,7 @@ name: Auto merge
 on:
   pull_request:
     branches:
-      master
+      rolling
   pull_request_review:
     types:
       - submitted
