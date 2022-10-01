@@ -101,9 +101,7 @@ if(BUILD_TESTING)
     "test/msg/DummyMessage.msg"
     "test/msg/DummyCustomHeaderMessage.msg"
     DEPENDENCIES "std_msgs"
-    SKIP_INSTALL
-    SKIP_EXPORT_DEPENDENCIES
-    SKIP_GROUP_MEMBERSHIP_CHECK)
+    SKIP_INSTALL)
 
   # To enable use of dummy_message.hpp in test_received_message_age
   rosidl_get_typesupport_target(cpp_typesupport_target libstatistics_collector_test_msgs "rosidl_typesupport_cpp")
