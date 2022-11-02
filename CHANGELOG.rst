@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.1 (2022-11-02)
+------------------
 * Remove unnecessary build dependency on std_msgs. (`#145 <https://github.com/ros-tooling/libstatistics_collector/issues/145>`_)
 * Bump pascalgn/automerge-action from 0.15.2 to 0.15.3
 * Cleanup the CI jobs on this repository. (`#146 <https://github.com/ros-tooling/libstatistics_collector/issues/146>`_)
