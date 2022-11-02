@@ -2,6 +2,15 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove unnecessary build dependency on std_msgs. (`#145 <https://github.com/ros-tooling/libstatistics_collector/issues/145>`_)
+* Bump pascalgn/automerge-action from 0.15.2 to 0.15.3
+* Cleanup the CI jobs on this repository. (`#146 <https://github.com/ros-tooling/libstatistics_collector/issues/146>`_)
+* Check if message has a "header" field with a stamp subfield of type builtin_interfaces::msg::Time (`#54 <https://github.com/ros-tooling/libstatistics_collector/issues/54>`_)
+* Mirror rolling to master
+* Contributors: Audrow Nash, Chris Lalancette, Scott Mende, dependabot[bot]
+
 1.2.0 (2022-03-29)
 ------------------
 * Bump pascalgn/automerge-action from 0.14.3 to 0.15.2
