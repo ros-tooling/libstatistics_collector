@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.0 (2022-11-07)
+------------------
+* Bump hmarr/auto-approve-action from 2.1.0 to 2.2.0
+* Contributors: dependabot[bot]
+
 1.2.0 (2022-03-29)
 ------------------
 * Bump pascalgn/automerge-action from 0.14.3 to 0.15.2
