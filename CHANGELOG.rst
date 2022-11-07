@@ -2,6 +2,9 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.4.0 (2022-11-07)
+------------------
+
 1.2.1 (2022-11-02)
 ------------------
 * Remove unnecessary build dependency on std_msgs. (`#145 <https://github.com/ros-tooling/libstatistics_collector/issues/145>`_)
