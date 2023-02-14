@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update libstatistics_collector to C++17. (`#154 <https://github.com/ros-tooling/libstatistics_collector/issues/154>`_)
+* Contributors: Chris Lalancette
+
 1.4.0 (2022-11-07)
 ------------------
 
