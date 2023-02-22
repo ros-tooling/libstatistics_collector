@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.3.1 (2023-02-21)
+------------------
 * Check if message has a "header" field with a stamp subfield of type builtin_interfaces::msg::Time (`#54 <https://github.com/ros-tooling/libstatistics_collector/issues/54>`_) (`#153 <https://github.com/ros-tooling/libstatistics_collector/issues/153>`_)
   * Fix for Issue 51. Adds check to HasHeader template to check that the message
   in question has a field called 'header' with a subfield 'stamp' of type builtin_interfaces::msg::Time.
