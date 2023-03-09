@@ -19,6 +19,8 @@
 
 #include "performance_test_fixture/performance_test_fixture.hpp"
 
+#include "rcutils/macros.h"
+
 using performance_test_fixture::PerformanceTest;
 using libstatistics_collector::moving_average_statistics::MovingAverageStatistics;
 using libstatistics_collector::collector::Collector;
@@ -82,6 +84,7 @@ BENCHMARK_F(PerformanceTest, collector_accept_data)(benchmark::State & st)
   TestCollector collector;
 
   for (auto _ : st) {
+    RCUTILS_UNUSED(_);
     collector.AcceptData(0);
   }
 }
@@ -92,6 +95,7 @@ BENCHMARK_F(PerformanceTest, add_measurement)(benchmark::State & st)
   MovingAverageStatistics moving_average_statistics;
 
   for (auto _ : st) {
+    RCUTILS_UNUSED(_);
     moving_average_statistics.AddMeasurement(0);
   }
 }
