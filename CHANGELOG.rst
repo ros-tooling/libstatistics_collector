@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2023-03-16)
+------------------
 * [foxy-devel] Update QD to QL 1 (`#69 <https://github.com/quarkytale/libstatistics_collector/issues/69>`_)
 * [Backport Foxy] Update QD (`#63 <https://github.com/quarkytale/libstatistics_collector/issues/63>`_)
 * [Backport Foxy] Added benchmark test to libstatistics_collector (`#57 <https://github.com/quarkytale/libstatistics_collector/issues/57>`_) (`#59 <https://github.com/quarkytale/libstatistics_collector/issues/59>`_)
