@@ -2,6 +2,13 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [foxy-devel] Update QD to QL 1 (`#69 <https://github.com/quarkytale/libstatistics_collector/issues/69>`_)
+* [Backport Foxy] Update QD (`#63 <https://github.com/quarkytale/libstatistics_collector/issues/63>`_)
+* [Backport Foxy] Added benchmark test to libstatistics_collector (`#57 <https://github.com/quarkytale/libstatistics_collector/issues/57>`_) (`#59 <https://github.com/quarkytale/libstatistics_collector/issues/59>`_)
+* Contributors: Alejandro Hernández Cordero, Stephen Brawner, Chris Lalancette, Emerson Knapp, Devin Bonnie
+
 1.0.1 (2020-05-27)
 ------------------
 * Added quality declaration (`#21 <https://github.com/ros-tooling/libstatistics_collector/issues/21>`_)
