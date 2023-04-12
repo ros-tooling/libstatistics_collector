@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.5.1 (2023-04-12)
+------------------
 * Bump hmarr/auto-approve-action from 3.2.0 to 3.2.1
 * Mark benchmark _ as unused. (`#158 <https://github.com/ros-tooling/libstatistics_collector/issues/158>`_)
 * Bump hmarr/auto-approve-action from 3.1.0 to 3.2.0
