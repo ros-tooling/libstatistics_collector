@@ -2,6 +2,15 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump hmarr/auto-approve-action from 3.2.0 to 3.2.1
+* Mark benchmark _ as unused. (`#158 <https://github.com/ros-tooling/libstatistics_collector/issues/158>`_)
+* Bump hmarr/auto-approve-action from 3.1.0 to 3.2.0
+* Bump ros-tooling/action-ros-ci from 0.2 to 0.3
+* Bump pascalgn/automerge-action from 0.15.5 to 0.15.6
+* Contributors: Chris Lalancette, dependabot[bot]
+
 1.5.0 (2023-02-14)
 ------------------
 * Update libstatistics_collector to C++17. (`#154 <https://github.com/ros-tooling/libstatistics_collector/issues/154>`_)
