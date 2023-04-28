@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.6.0 (2023-04-28)
+------------------
 * Bump codecov/codecov-action from 3.1.2 to 3.1.3
 * Contributors: dependabot[bot]
 
