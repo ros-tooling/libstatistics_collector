@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump codecov/codecov-action from 3.1.2 to 3.1.3
+* Contributors: dependabot[bot]
+
 1.5.1 (2023-04-12)
 ------------------
 * Bump hmarr/auto-approve-action from 3.2.0 to 3.2.1
