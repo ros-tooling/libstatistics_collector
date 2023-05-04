@@ -16,6 +16,7 @@
 #define LIBSTATISTICS_COLLECTOR__MOVING_AVERAGE_STATISTICS__TYPES_HPP_
 
 #include <cmath>
+#include <cstdint>
 #include <sstream>
 #include <string>
 
