@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add in missing cstdint include. (`#165 <https://github.com/ros-tooling/libstatistics_collector/issues/165>`_)
+* Contributors: Chris Lalancette
+
 1.6.0 (2023-04-28)
 ------------------
 * Bump codecov/codecov-action from 3.1.2 to 3.1.3
