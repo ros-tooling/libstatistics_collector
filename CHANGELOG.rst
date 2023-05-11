@@ -2,6 +2,9 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.6.2 (2023-05-11)
+------------------
+
 1.6.1 (2023-05-11)
 ------------------
 * Add in missing cstdint include. (`#165 <https://github.com/ros-tooling/libstatistics_collector/issues/165>`_)
