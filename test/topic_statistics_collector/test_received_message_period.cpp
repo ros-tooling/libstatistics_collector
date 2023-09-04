@@ -25,10 +25,14 @@
 
 #include "rcl/time.h"
 
+#include "rmw/types.h"
+
 namespace
 {
 using ReceivedIntMessagePeriodCollector =
   libstatistics_collector::topic_statistics_collector::ReceivedMessagePeriodCollector<int>;
+using ReceivedUntypedMessagePeriodCollector =
+  libstatistics_collector::topic_statistics_collector::ReceivedMessagePeriodCollector<>;
 
 constexpr const std::chrono::seconds kDefaultDurationSeconds{1};
 constexpr const int kDefaultMessage{42};
@@ -38,6 +42,50 @@ constexpr const double kExpectedMaxMilliseconds{1000.0};
 constexpr const double kExpectedStandardDeviation{0.0};
 }  // namespace
 
+TEST(ReceivedMessagePeriodTest, TestUntypedPeriodMeasurement) {
+  ReceivedUntypedMessagePeriodCollector test{};
+  rmw_message_info_t msg_info = rmw_get_zero_initialized_message_info();
+
+  EXPECT_FALSE(test.IsStarted()) << "Expected to be not started after constructed";
+
+  EXPECT_TRUE(test.Start()) << "Expected Start() to be successful";
+  EXPECT_TRUE(test.IsStarted()) << "Expected to be started";
+
+  rcl_time_point_value_t fake_now_nanos_{1};
+  msg_info.received_timestamp = fake_now_nanos_;
+
+  test.OnMessageReceived(msg_info);
+  auto stats = test.GetStatisticsResults();
+  EXPECT_EQ(0, stats.sample_count) << "Expected 0 samples to be collected";
+
+  fake_now_nanos_ +=
+    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+  msg_info.received_timestamp = fake_now_nanos_;
+
+  test.OnMessageReceived(msg_info);
+  stats = test.GetStatisticsResults();
+  EXPECT_EQ(1, stats.sample_count) << "Expected 1 sample to be collected";
+
+  fake_now_nanos_ +=
+    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+  msg_info.received_timestamp = fake_now_nanos_;
+
+  test.OnMessageReceived(msg_info);
+  stats = test.GetStatisticsResults();
+  EXPECT_EQ(2, stats.sample_count) << "Expected 2 samples to be collected";
+
+  fake_now_nanos_ +=
+    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+  msg_info.received_timestamp = fake_now_nanos_;
+
+  test.OnMessageReceived(msg_info);
+  stats = test.GetStatisticsResults();
+  EXPECT_EQ(3, stats.sample_count);
+  EXPECT_EQ(kExpectedAverageMilliseconds, stats.average);
+  EXPECT_EQ(kExpectedMinMilliseconds, stats.min);
+  EXPECT_EQ(kExpectedMaxMilliseconds, stats.max);
+  EXPECT_EQ(kExpectedStandardDeviation, stats.standard_deviation);
+}
 
 TEST(ReceivedMessagePeriodTest, TestPeriodMeasurement) {
   ReceivedIntMessagePeriodCollector test{};
@@ -84,4 +132,9 @@ TEST(ReceivedMessagePeriodTest, TestGetStatNameAndUnit) {
 
   EXPECT_FALSE(test.GetMetricName().empty());
   EXPECT_FALSE(test.GetMetricUnit().empty());
+
+  ReceivedUntypedMessagePeriodCollector untyped_test{};
+
+  EXPECT_FALSE(untyped_test.GetMetricName().empty());
+  EXPECT_FALSE(untyped_test.GetMetricUnit().empty());
 }

@@ -24,6 +24,8 @@
 
 #include "rcl/time.h"
 
+#include "rcl/types.h"
+
 namespace
 {
 using DummyMessage = libstatistics_collector::msg::DummyMessage;
@@ -34,6 +36,8 @@ using ReceivedIntMessageAgeCollector = libstatistics_collector::
 using DummyCustomHeaderMessage = libstatistics_collector::msg::DummyCustomHeaderMessage;
 using ReceivedDummyCustomHeaderMessageAgeCollector = libstatistics_collector::
   topic_statistics_collector::ReceivedMessageAgeCollector<DummyCustomHeaderMessage>;
+using ReceivedUntypedMessageAgeCollector = libstatistics_collector::
+  topic_statistics_collector::ReceivedMessageAgeCollector<>;
 
 constexpr const std::chrono::seconds kDefaultDurationSeconds{1};
 constexpr const double kExpectedAverageMilliseconds{2000.0};
@@ -44,8 +48,82 @@ constexpr const int kDefaultTimesToTest{10};
 constexpr const int64_t kDefaultTimeMessageReceived{1000};
 constexpr const rcl_time_point_value_t kStartTime{123456789};
 constexpr const int kRandomIntMessage{7};
+
 }  // namespace
 
+TEST(ReceivedMessageAgeTest, TestMessagesWithDifferentDefaultTimes) {
+  libstatistics_collector::moving_average_statistics::StatisticData stats;
+  {
+    // Initialize message_info source_timestamp at 0
+    ReceivedUntypedMessageAgeCollector msg_collector{};
+    rmw_message_info_t message_info = rmw_get_zero_initialized_message_info();
+    message_info.source_timestamp = 0;
+    message_info.received_timestamp = kDefaultTimeMessageReceived;
+
+    for (int i = 0; i < kDefaultTimesToTest; ++i) {
+      msg_collector.OnMessageReceived(message_info);
+      stats = msg_collector.GetStatisticsResults();
+      EXPECT_EQ(0, stats.sample_count) << "Expect 0 samples to be collected";
+    }
+  }
+  {
+    // Initialize message_info source_timestamp at random time
+    ReceivedUntypedMessageAgeCollector msg_collector{};
+    rmw_message_info_t message_info = rmw_get_zero_initialized_message_info();
+    message_info.source_timestamp = kDefaultTimeMessageReceived;
+    message_info.received_timestamp = kDefaultTimeMessageReceived;
+
+    for (int i = 0; i < kDefaultTimesToTest; ++i) {
+      msg_collector.OnMessageReceived(message_info);
+      stats = msg_collector.GetStatisticsResults();
+      EXPECT_EQ(i + 1, stats.sample_count) << "Expect " << i + 1 << " samples to be collected";
+    }
+  }
+}
+
+TEST(ReceivedMessageAgeTest, TestUntypedAgeMeasurement) {
+  ReceivedUntypedMessageAgeCollector test_collector{};
+
+  EXPECT_FALSE(test_collector.IsStarted()) << "Expect to be not started after constructed";
+
+  EXPECT_TRUE(test_collector.Start()) << "Expect Start() to be successful";
+  EXPECT_TRUE(test_collector.IsStarted()) << "Expect to be started";
+
+  rcl_time_point_value_t fake_now_nanos_{kStartTime};
+
+  rmw_message_info_t msg = rmw_get_zero_initialized_message_info();
+  msg.source_timestamp = fake_now_nanos_;
+  msg.received_timestamp = fake_now_nanos_;
+
+  fake_now_nanos_ +=
+    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+  msg.received_timestamp = fake_now_nanos_;
+
+  test_collector.OnMessageReceived(msg);
+  auto stats = test_collector.GetStatisticsResults();
+  EXPECT_EQ(1, stats.sample_count);
+
+  fake_now_nanos_ +=
+    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+  msg.received_timestamp = fake_now_nanos_;
+
+  test_collector.OnMessageReceived(msg);
+  stats = test_collector.GetStatisticsResults();
+  EXPECT_EQ(2, stats.sample_count);
+
+  fake_now_nanos_ +=
+    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+  msg.received_timestamp = fake_now_nanos_;
+
+  test_collector.OnMessageReceived(msg);
+  stats = test_collector.GetStatisticsResults();
+  EXPECT_EQ(3, stats.sample_count);
+
+  EXPECT_EQ(kExpectedAverageMilliseconds, stats.average);
+  EXPECT_EQ(kExpectedMinMilliseconds, stats.min);
+  EXPECT_EQ(kExpectedMaxMilliseconds, stats.max);
+  EXPECT_DOUBLE_EQ(kExpectedStandardDeviation, stats.standard_deviation);
+}
 
 TEST(ReceivedMessageAgeTest, TestOnlyMessagesWithHeaderGetSampled) {
   ReceivedIntMessageAgeCollector int_msg_collector{};
@@ -147,4 +225,9 @@ TEST(ReceivedMessageAgeTest, TestGetStatNameAndUnit) {
 
   EXPECT_FALSE(test_collector.GetMetricName().empty());
   EXPECT_FALSE(test_collector.GetMetricUnit().empty());
+
+  ReceivedUntypedMessageAgeCollector test_untyped_collector{};
+
+  EXPECT_FALSE(test_untyped_collector.GetMetricName().empty());
+  EXPECT_FALSE(test_untyped_collector.GetMetricUnit().empty());
 }

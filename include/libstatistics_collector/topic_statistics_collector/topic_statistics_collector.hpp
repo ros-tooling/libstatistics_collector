@@ -21,6 +21,8 @@
 
 #include "rcl/time.h"
 
+#include "rmw/types.h"
+
 #include "libstatistics_collector/collector/collector.hpp"
 
 namespace libstatistics_collector
@@ -49,9 +51,21 @@ public:
    * following 1). the time provided is strictly monotonic 2). the time provided uses the same source
    * as time obtained from the message header.
    */
+  [[deprecated("Use rmw_message_info_t instead of custom type T")]]
   virtual void OnMessageReceived(
     const T & received_message,
     const rcl_time_point_value_t now_nanoseconds) = 0;
+
+  /**
+   * Handle receiving a single message of type rmw_message_info_t.
+   *
+   * @param received_message rmw_message_info_t the ROS2 message info to collect
+   * @param now_nanoseconds nanoseconds the time the message was received. Any metrics using this time assumes the
+   * following 1). the time provided is strictly monotonic 2). the time provided uses the same source
+   * as time obtained from the message header.
+   */
+  virtual void OnMessageReceived(
+    const rmw_message_info_t & received_message) = 0;
 };
 
 }  // namespace topic_statistics_collector
