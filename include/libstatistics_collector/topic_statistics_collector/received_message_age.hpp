@@ -133,8 +133,8 @@ public:
   {
     // only compare if non-zero
     if (received_message.source_timestamp && received_message.received_timestamp) {
-      const std::chrono::nanoseconds age_nanos{received_message.received_timestamp
-        - received_message.source_timestamp};
+      const std::chrono::nanoseconds age_nanos{received_message.received_timestamp -
+        received_message.source_timestamp};
       const auto age_millis = std::chrono::duration<double, std::milli>(age_nanos);
 
       collector::Collector::AcceptData(static_cast<double>(age_millis.count()));
