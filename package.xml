@@ -12,6 +12,7 @@
   <depend>builtin_interfaces</depend>
   <depend>rcl</depend>
   <depend>rcpputils</depend>
+  <depend>rmw</depend>
   <depend>statistics_msgs</depend>
 
   <test_depend>ament_cmake_gtest</test_depend>
