@@ -93,12 +93,12 @@ if(BUILD_TESTING)
   ament_add_gtest(test_received_message_period
     test/topic_statistics_collector/test_received_message_period.cpp)
   target_link_libraries(test_received_message_period ${PROJECT_NAME})
-  ament_target_dependencies(test_received_message_period "rcl" "rcpputils")
+  ament_target_dependencies(test_received_message_period "rcl" "rmw" "rcpputils")
 
   ament_add_gtest(test_received_message_age
     test/topic_statistics_collector/test_received_message_age.cpp)
   target_link_libraries(test_received_message_age ${PROJECT_NAME})
-  ament_target_dependencies(test_received_message_age "rcl" "rcpputils")
+  ament_target_dependencies(test_received_message_age "rcl" "rmw" "rcpputils")
 
   rosidl_generate_interfaces(libstatistics_collector_test_msgs
     "test/msg/DummyMessage.msg"

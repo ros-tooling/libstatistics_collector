@@ -24,7 +24,7 @@
 
 #include "rcl/time.h"
 
-#include "rcl/types.h"
+#include "rmw/types.h"
 
 namespace
 {
