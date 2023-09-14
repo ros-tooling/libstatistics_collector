@@ -31,12 +31,21 @@ namespace topic_statistics_collector
 {
 
 /**
+ * Primary specialization class template until deprecated templated class is phased out
+ */
+template<typename T = rmw_message_info_t, typename Enable = void>
+class TopicStatisticsCollector : public collector::Collector
+{};
+
+/**
  * Interface to collect and perform measurements for ROS2 topic statistics.
  *
  * @tparam T the ROS2 message type to collect
  */
 template<typename T>
-class TopicStatisticsCollector : public collector::Collector
+class TopicStatisticsCollector<
+    T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
+  : public collector::Collector
 {
 public:
   TopicStatisticsCollector() = default;
@@ -51,21 +60,37 @@ public:
    * following 1). the time provided is strictly monotonic 2). the time provided uses the same source
    * as time obtained from the message header.
    */
-  [[deprecated("Use rmw_message_info_t instead of custom type T")]]
+  [[deprecated("Don't use TopicStatisticsCollector with type T, use rmw_message_info_t"
+  "with an untyped TopicStatisticsCollector<>")]]
   virtual void OnMessageReceived(
     const T & received_message,
     const rcl_time_point_value_t now_nanoseconds) = 0;
+};
+
+/**
+ * Interface to collect and perform measurements for ROS2 topic statistics.
+ */
+template<>
+class TopicStatisticsCollector<rmw_message_info_t,
+    std::enable_if_t<std::is_same<rmw_message_info_t, rmw_message_info_t>::value>>
+  : public collector::Collector
+{
+public:
+  TopicStatisticsCollector() = default;
+
+  virtual ~TopicStatisticsCollector() = default;
 
   /**
    * Handle receiving a single message of type rmw_message_info_t.
    *
-   * @param received_message rmw_message_info_t the ROS2 message info to collect
+   * @param received_message rmw_message_info_t the ROS2 message type to collect
    * @param now_nanoseconds nanoseconds the time the message was received. Any metrics using this time assumes the
    * following 1). the time provided is strictly monotonic 2). the time provided uses the same source
    * as time obtained from the message header.
    */
   virtual void OnMessageReceived(
-    const rmw_message_info_t & received_message) = 0;
+    const rmw_message_info_t & received_message,
+    const rcl_time_point_value_t now_nanoseconds) = 0;
 };
 
 }  // namespace topic_statistics_collector
