@@ -39,8 +39,6 @@ constexpr const double kExpectedStandardDeviation{816.49658092772597};
 constexpr const int kDefaultTimesToTest{10};
 constexpr const int64_t kDefaultTimeMessageReceived{1000};
 constexpr const rcl_time_point_value_t kStartTime{123456789};
-constexpr const int kRandomIntMessage{7};
-
 }  // namespace
 
 TEST(ReceivedMessageAgeTest, TestMessagesWithDifferentDefaultTimes) {
@@ -69,6 +67,19 @@ TEST(ReceivedMessageAgeTest, TestMessagesWithDifferentDefaultTimes) {
       stats = msg_collector.GetStatisticsResults();
       EXPECT_EQ(i + 1, stats.sample_count) << "Expect " << i + 1 << " samples to be collected";
       fake_now_nanos_++;
+    }
+  }
+  {
+    // Initialize message_info source_timestamp at random time and fake_now_nanos_ at 0
+    ReceivedMessageAgeCollector msg_collector{};
+    rmw_message_info_t message_info = rmw_get_zero_initialized_message_info();
+    message_info.source_timestamp = kDefaultTimeMessageReceived;
+    auto fake_now_nanos_ = 0;
+
+    for (int i = 0; i < kDefaultTimesToTest; ++i) {
+      msg_collector.OnMessageReceived(message_info, fake_now_nanos_);
+      stats = msg_collector.GetStatisticsResults();
+      EXPECT_EQ(0, stats.sample_count) << "Expect 0 samples to be collected";
     }
   }
 }
