@@ -163,11 +163,11 @@ public:
    * Handle a message received and measure its received period. This member is thread safe and acquires
    * a lock to prevent race conditions when setting the time_last_message_received_ member.
    *
-   * @param received_message
+   * @param message_info the message information of the received message
    * @param now_nanoseconds time the message was received in nanoseconds
    */
   void OnMessageReceived(
-    const rmw_message_info_t & received_message,
+    const rmw_message_info_t & message_info,
     const rcl_time_point_value_t now_nanoseconds)
   override RCPPUTILS_TSA_REQUIRES(mutex_)
   {

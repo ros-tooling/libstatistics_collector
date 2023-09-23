@@ -180,19 +180,19 @@ public:
   virtual ~ReceivedMessageAgeCollector() = default;
 
   /**
-  * Handle a new incoming message. Calculate message age if a valid Header is present.
+  * Handle a new incoming message. Calculate message age if timestamps in message info are valid.
   *
-  * @param received_message the message to calculate age of.
+  * @param message_info the message information of the received message.
   * @param now_nanoseconds time the message was received in nanoseconds
   */
   void OnMessageReceived(
-    const rmw_message_info_t & received_message,
+    const rmw_message_info_t & message_info,
     const rcl_time_point_value_t now_nanoseconds) override
   {
     // only compare if non-zero
-    if (received_message.source_timestamp && now_nanoseconds) {
+    if (message_info.source_timestamp && now_nanoseconds) {
       const std::chrono::nanoseconds age_nanos{now_nanoseconds -
-        received_message.source_timestamp};
+        message_info.source_timestamp};
       const auto age_millis = std::chrono::duration<double, std::milli>(age_nanos);
 
       collector::Collector::AcceptData(static_cast<double>(age_millis.count()));
