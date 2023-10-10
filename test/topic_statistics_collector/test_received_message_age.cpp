@@ -17,13 +17,7 @@
 #include <chrono>
 #include <string>
 
-#include "libstatistics_collector/msg/dummy_message.hpp"
-#include "libstatistics_collector/msg/dummy_custom_header_message.hpp"
-#include "libstatistics_collector/topic_statistics_collector/constants.hpp"
 #include "libstatistics_collector/topic_statistics_collector/received_message_age.hpp"
-
-#include "rcl/time.h"
-
 #include "rmw/types.h"
 
 namespace
@@ -115,8 +109,8 @@ TEST(ReceivedMessageAgeTest, TestAgeMeasurement) {
 }
 
 TEST(ReceivedMessageAgeTest, TestGetStatNameAndUnit) {
-  ReceivedMessageAgeCollector test_untyped_collector{};
+  ReceivedMessageAgeCollector test_collector{};
 
-  EXPECT_FALSE(test_untyped_collector.GetMetricName().empty());
-  EXPECT_FALSE(test_untyped_collector.GetMetricUnit().empty());
+  EXPECT_FALSE(test_collector.GetMetricName().empty());
+  EXPECT_FALSE(test_collector.GetMetricUnit().empty());
 }
