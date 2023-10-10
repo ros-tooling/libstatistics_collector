@@ -104,8 +104,7 @@ class ReceivedMessageAgeCollector : public TopicStatisticsCollector<T>
 template<typename T>
 class
   [[deprecated("Don't use templated version of the ReceivedMessageAgeCollector, use"
-  "libstatistics_collector::ReceivedMessageAgeCollector with rmw_message_info_t parameter in the"
-  "OnMessageReceived callback")]]
+  "libstatistics_collector::ReceivedMessageAgeCollector alias instead")]]
   ReceivedMessageAgeCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
   : public TopicStatisticsCollector<T>
 {

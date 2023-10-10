@@ -52,8 +52,7 @@ class ReceivedMessagePeriodCollector : public TopicStatisticsCollector<T>
 template<typename T>
 class
   [[deprecated("Don't use templated version of the ReceivedMessagePeriodCollector, use"
-  "libstatistics_collector::ReceivedMessagePeriodCollector with rmw_message_info_t parameter in the"
-  "OnMessageReceived callback")]]
+  "libstatistics_collector::ReceivedMessagePeriodCollector alias instead")]]
   ReceivedMessagePeriodCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
   : public TopicStatisticsCollector<T>
 {

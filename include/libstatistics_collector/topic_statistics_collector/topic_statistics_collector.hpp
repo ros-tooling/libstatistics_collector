@@ -48,8 +48,7 @@ class TopicStatisticsCollector : public collector::Collector
 template<typename T>
 class
   [[deprecated("Don't use templated version of the TopicStatisticsCollector, use"
-  "libstatistics_collector::TopicStatisticsCollector with rmw_message_info_t parameter in the"
-  "OnMessageReceived callback")]]
+  "libstatistics_collector::TopicStatisticsCollector alias instead")]]
   TopicStatisticsCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
   : public collector::Collector
 {
