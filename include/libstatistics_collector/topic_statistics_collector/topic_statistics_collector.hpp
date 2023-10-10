@@ -82,7 +82,7 @@ class TopicStatisticsCollector<rmw_message_info_t,
 public:
   TopicStatisticsCollector() = default;
 
-  ~TopicStatisticsCollector() override = default;
+  virtual ~TopicStatisticsCollector() = default;
 
   /**
    * Handle receiving a single message of type rmw_message_info_t.
