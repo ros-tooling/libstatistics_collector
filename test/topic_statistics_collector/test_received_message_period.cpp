@@ -24,8 +24,7 @@
 
 namespace
 {
-using ReceivedMessagePeriodCollector =
-  libstatistics_collector::topic_statistics_collector::ReceivedMessagePeriodCollector<>;
+using ReceivedMessagePeriodCollector = libstatistics_collector::ReceivedMessagePeriodCollector;
 
 constexpr const std::chrono::seconds kDefaultDurationSeconds{1};
 constexpr const double kExpectedAverageMilliseconds{1000.0};

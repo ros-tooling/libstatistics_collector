@@ -88,6 +88,9 @@ struct TimeStamp<M, typename std::enable_if<HasHeader<M>::value>::type>
 
 /**
  * Primary specialization class template until deprecated templated class is phased out
+ * @warning Don't use templated version of the ReceivedMessageAgeCollector, use
+ * libstatistics_collector::ReceivedMessageAgeCollector alias with rmw_message_info_t
+ * parameter in the OnMessageReceived callback
  */
 template<typename T = rmw_message_info_t, typename Enable = void>
 class ReceivedMessageAgeCollector : public TopicStatisticsCollector<T>
@@ -99,11 +102,18 @@ class ReceivedMessageAgeCollector : public TopicStatisticsCollector<T>
  * @tparam T the message type to receive from the subscriber / listener
 */
 template<typename T>
-class ReceivedMessageAgeCollector<
-    T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
+class
+  [[deprecated("Don't use templated version of the ReceivedMessageAgeCollector, use"
+  "libstatistics_collector::ReceivedMessageAgeCollector with rmw_message_info_t parameter in the"
+  "OnMessageReceived callback")]]
+  ReceivedMessageAgeCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
   : public TopicStatisticsCollector<T>
 {
 public:
+  /**
+   * Construct a ReceivedMessageAgeCollector object.
+   *
+   */
   ReceivedMessageAgeCollector() = default;
 
   virtual ~ReceivedMessageAgeCollector() = default;
@@ -114,8 +124,6 @@ public:
   * @param received_message the message to calculate age of.
   * @param now_nanoseconds time the message was received in nanoseconds
   */
-  [[deprecated("Don't use ReceivedMessageAgeCollector with type T, use rmw_message_info_t"
-  "with an untyped ReceivedMessageAgeCollector<>")]]
   void OnMessageReceived(
     const T & received_message,
     const rcl_time_point_value_t now_nanoseconds) override
@@ -177,7 +185,7 @@ class ReceivedMessageAgeCollector<
 public:
   ReceivedMessageAgeCollector() = default;
 
-  virtual ~ReceivedMessageAgeCollector() = default;
+  ~ReceivedMessageAgeCollector() override = default;
 
   /**
   * Handle a new incoming message. Calculate message age if timestamps in message info are valid.
@@ -232,6 +240,9 @@ protected:
 };
 
 }  // namespace topic_statistics_collector
+
+using ReceivedMessageAgeCollector = topic_statistics_collector::ReceivedMessageAgeCollector<>;
+
 }  // namespace libstatistics_collector
 
 #endif  // LIBSTATISTICS_COLLECTOR__TOPIC_STATISTICS_COLLECTOR__RECEIVED_MESSAGE_AGE_HPP_

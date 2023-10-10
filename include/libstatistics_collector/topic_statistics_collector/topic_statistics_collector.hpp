@@ -32,6 +32,9 @@ namespace topic_statistics_collector
 
 /**
  * Primary specialization class template until deprecated templated class is phased out
+ * @warning Don't use templated version of the TopicStatisticsCollector, use
+ * libstatistics_collector::TopicStatisticsCollector alias with rmw_message_info_t parameter in
+ * the OnMessageReceived callback
  */
 template<typename T = rmw_message_info_t, typename Enable = void>
 class TopicStatisticsCollector : public collector::Collector
@@ -43,8 +46,11 @@ class TopicStatisticsCollector : public collector::Collector
  * @tparam T the ROS2 message type to collect
  */
 template<typename T>
-class TopicStatisticsCollector<
-    T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
+class
+  [[deprecated("Don't use templated version of the TopicStatisticsCollector, use"
+  "libstatistics_collector::TopicStatisticsCollector with rmw_message_info_t parameter in the"
+  "OnMessageReceived callback")]]
+  TopicStatisticsCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
   : public collector::Collector
 {
 public:
@@ -60,8 +66,6 @@ public:
    * following 1). the time provided is strictly monotonic 2). the time provided uses the same source
    * as time obtained from the message header.
    */
-  [[deprecated("Don't use TopicStatisticsCollector with type T, use rmw_message_info_t"
-  "with an untyped TopicStatisticsCollector<>")]]
   virtual void OnMessageReceived(
     const T & received_message,
     const rcl_time_point_value_t now_nanoseconds) = 0;
@@ -78,15 +82,16 @@ class TopicStatisticsCollector<rmw_message_info_t,
 public:
   TopicStatisticsCollector() = default;
 
-  virtual ~TopicStatisticsCollector() = default;
+  ~TopicStatisticsCollector() override = default;
 
   /**
    * Handle receiving a single message of type rmw_message_info_t.
    *
    * @param received_message rmw_message_info_t the ROS2 message type to collect
-   * @param now_nanoseconds nanoseconds the time the message was received. Any metrics using this time assumes the
-   * following 1). the time provided is strictly monotonic 2). the time provided uses the same source
-   * as time obtained from the message header.
+   * @param now_nanoseconds nanoseconds the time the message was received.
+   * Any metrics using this time assumes the following:
+   * 1). the time provided is strictly monotonic
+   * 2). the time provided uses the same source as time obtained from the message header.
    */
   virtual void OnMessageReceived(
     const rmw_message_info_t & received_message,
@@ -94,6 +99,9 @@ public:
 };
 
 }  // namespace topic_statistics_collector
+
+using TopicStatisticsCollector = topic_statistics_collector::TopicStatisticsCollector<>;
+
 }  // namespace libstatistics_collector
 
 #endif  // LIBSTATISTICS_COLLECTOR__TOPIC_STATISTICS_COLLECTOR__TOPIC_STATISTICS_COLLECTOR_HPP_

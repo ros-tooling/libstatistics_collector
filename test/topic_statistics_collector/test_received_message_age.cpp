@@ -22,8 +22,7 @@
 
 namespace
 {
-using ReceivedMessageAgeCollector = libstatistics_collector::
-  topic_statistics_collector::ReceivedMessageAgeCollector<>;
+using ReceivedMessageAgeCollector = libstatistics_collector::ReceivedMessageAgeCollector;
 
 constexpr const std::chrono::seconds kDefaultDurationSeconds{1};
 constexpr const double kExpectedAverageMilliseconds{2000.0};
