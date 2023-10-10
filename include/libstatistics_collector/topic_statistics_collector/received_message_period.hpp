@@ -41,7 +41,7 @@ class ReceivedMessagePeriodCollector : public TopicStatisticsCollector<T>
 {};
 
 /**
- * Class used to measure the received messsage, tparam T, period from a ROS2 subscriber. This class
+ * Class used to measure the received message, tparam T, period from a ROS2 subscriber. This class
  * is thread safe and acquires a mutex when the member OnMessageReceived is executed.
  *
  * @tparam T the message type to receive from the subscriber / listener

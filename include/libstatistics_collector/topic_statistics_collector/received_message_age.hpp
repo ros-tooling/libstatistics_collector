@@ -94,7 +94,7 @@ class ReceivedMessageAgeCollector : public TopicStatisticsCollector<T>
 {};
 
 /**
- * Class used to measure the received messsage, tparam T, age from a ROS2 subscriber.
+ * Class used to measure the received message, tparam T, age from a ROS2 subscriber.
  *
  * @tparam T the message type to receive from the subscriber / listener
 */
@@ -144,7 +144,7 @@ public:
   }
 
   /**
-   * Return messge age metric unit
+   * Return message age metric unit
    *
    * @return a string representing messager age metric unit
    */
@@ -166,7 +166,7 @@ protected:
 };
 
 /**
- * Class used to measure the received messsage age from a ROS2 subscriber.
+ * Class used to measure the received message age from a ROS2 subscriber.
 */
 template<>
 class ReceivedMessageAgeCollector<
@@ -210,9 +210,9 @@ public:
   }
 
   /**
-   * Return messge age metric unit
+   * Return message age metric unit
    *
-   * @return a string representing messager age metric unit
+   * @return a string representing message age metric unit
    */
   std::string GetMetricUnit() const override
   {
