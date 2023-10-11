@@ -16,31 +16,28 @@
 #include <gtest/gtest.h>
 
 #include <chrono>
-#include <string>
 #include <thread>
 
 #include "libstatistics_collector/moving_average_statistics/types.hpp"
-#include "libstatistics_collector/topic_statistics_collector/constants.hpp"
 #include "libstatistics_collector/topic_statistics_collector/received_message_period.hpp"
-
-#include "rcl/time.h"
+#include "rmw/types.h"
 
 namespace
 {
-using ReceivedIntMessagePeriodCollector =
-  libstatistics_collector::topic_statistics_collector::ReceivedMessagePeriodCollector<int>;
+using ReceivedMessagePeriodCollector = libstatistics_collector::ReceivedMessagePeriodCollector;
 
 constexpr const std::chrono::seconds kDefaultDurationSeconds{1};
-constexpr const int kDefaultMessage{42};
 constexpr const double kExpectedAverageMilliseconds{1000.0};
 constexpr const double kExpectedMinMilliseconds{1000.0};
 constexpr const double kExpectedMaxMilliseconds{1000.0};
 constexpr const double kExpectedStandardDeviation{0.0};
 }  // namespace
 
-
 TEST(ReceivedMessagePeriodTest, TestPeriodMeasurement) {
-  ReceivedIntMessagePeriodCollector test{};
+  ReceivedMessagePeriodCollector test{};
+  libstatistics_collector::moving_average_statistics::StatisticData stats;
+
+  rmw_message_info_t msg_info = rmw_get_zero_initialized_message_info();
 
   EXPECT_FALSE(test.IsStarted()) << "Expected to be not started after constructed";
 
@@ -49,30 +46,15 @@ TEST(ReceivedMessagePeriodTest, TestPeriodMeasurement) {
 
   rcl_time_point_value_t fake_now_nanos_{1};
 
-  test.OnMessageReceived(kDefaultMessage, fake_now_nanos_);
-  auto stats = test.GetStatisticsResults();
-  EXPECT_EQ(0, stats.sample_count) << "Expected 0 samples to be collected";
+  for (int i = 0; i < 4; i++) {
+    test.OnMessageReceived(msg_info, fake_now_nanos_);
+    stats = test.GetStatisticsResults();
+    EXPECT_EQ(i, stats.sample_count) << "Expected " << i << " samples to be collected";
 
-  fake_now_nanos_ +=
-    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+    fake_now_nanos_ +=
+      std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
+  }
 
-  test.OnMessageReceived(kDefaultMessage, fake_now_nanos_);
-  stats = test.GetStatisticsResults();
-  EXPECT_EQ(1, stats.sample_count) << "Expected 1 sample to be collected";
-
-  fake_now_nanos_ +=
-    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
-
-  test.OnMessageReceived(kDefaultMessage, fake_now_nanos_);
-  stats = test.GetStatisticsResults();
-  EXPECT_EQ(2, stats.sample_count) << "Expected 2 samples to be collected";
-
-  fake_now_nanos_ +=
-    std::chrono::duration_cast<std::chrono::nanoseconds>(kDefaultDurationSeconds).count();
-
-  test.OnMessageReceived(kDefaultMessage, fake_now_nanos_);
-  stats = test.GetStatisticsResults();
-  EXPECT_EQ(3, stats.sample_count);
   EXPECT_EQ(kExpectedAverageMilliseconds, stats.average);
   EXPECT_EQ(kExpectedMinMilliseconds, stats.min);
   EXPECT_EQ(kExpectedMaxMilliseconds, stats.max);
@@ -80,7 +62,7 @@ TEST(ReceivedMessagePeriodTest, TestPeriodMeasurement) {
 }
 
 TEST(ReceivedMessagePeriodTest, TestGetStatNameAndUnit) {
-  ReceivedIntMessagePeriodCollector test{};
+  ReceivedMessagePeriodCollector test{};
 
   EXPECT_FALSE(test.GetMetricName().empty());
   EXPECT_FALSE(test.GetMetricUnit().empty());
