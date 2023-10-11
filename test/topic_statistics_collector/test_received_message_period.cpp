@@ -16,24 +16,17 @@
 #include <gtest/gtest.h>
 
 #include <chrono>
-#include <string>
 #include <thread>
 
 #include "libstatistics_collector/moving_average_statistics/types.hpp"
-#include "libstatistics_collector/topic_statistics_collector/constants.hpp"
 #include "libstatistics_collector/topic_statistics_collector/received_message_period.hpp"
-
-#include "rcl/time.h"
-
 #include "rmw/types.h"
 
 namespace
 {
-using ReceivedMessagePeriodCollector =
-  libstatistics_collector::topic_statistics_collector::ReceivedMessagePeriodCollector<>;
+using ReceivedMessagePeriodCollector = libstatistics_collector::ReceivedMessagePeriodCollector;
 
 constexpr const std::chrono::seconds kDefaultDurationSeconds{1};
-constexpr const int kDefaultMessage{42};
 constexpr const double kExpectedAverageMilliseconds{1000.0};
 constexpr const double kExpectedMinMilliseconds{1000.0};
 constexpr const double kExpectedMaxMilliseconds{1000.0};
@@ -68,10 +61,9 @@ TEST(ReceivedMessagePeriodTest, TestPeriodMeasurement) {
   EXPECT_EQ(kExpectedStandardDeviation, stats.standard_deviation);
 }
 
-
 TEST(ReceivedMessagePeriodTest, TestGetStatNameAndUnit) {
-  ReceivedMessagePeriodCollector untyped_test{};
+  ReceivedMessagePeriodCollector test{};
 
-  EXPECT_FALSE(untyped_test.GetMetricName().empty());
-  EXPECT_FALSE(untyped_test.GetMetricUnit().empty());
+  EXPECT_FALSE(test.GetMetricName().empty());
+  EXPECT_FALSE(test.GetMetricUnit().empty());
 }

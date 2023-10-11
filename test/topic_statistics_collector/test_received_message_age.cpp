@@ -17,19 +17,12 @@
 #include <chrono>
 #include <string>
 
-#include "libstatistics_collector/msg/dummy_message.hpp"
-#include "libstatistics_collector/msg/dummy_custom_header_message.hpp"
-#include "libstatistics_collector/topic_statistics_collector/constants.hpp"
 #include "libstatistics_collector/topic_statistics_collector/received_message_age.hpp"
-
-#include "rcl/time.h"
-
 #include "rmw/types.h"
 
 namespace
 {
-using ReceivedMessageAgeCollector = libstatistics_collector::
-  topic_statistics_collector::ReceivedMessageAgeCollector<>;
+using ReceivedMessageAgeCollector = libstatistics_collector::ReceivedMessageAgeCollector;
 
 constexpr const std::chrono::seconds kDefaultDurationSeconds{1};
 constexpr const double kExpectedAverageMilliseconds{2000.0};
@@ -115,8 +108,8 @@ TEST(ReceivedMessageAgeTest, TestAgeMeasurement) {
 }
 
 TEST(ReceivedMessageAgeTest, TestGetStatNameAndUnit) {
-  ReceivedMessageAgeCollector test_untyped_collector{};
+  ReceivedMessageAgeCollector test_collector{};
 
-  EXPECT_FALSE(test_untyped_collector.GetMetricName().empty());
-  EXPECT_FALSE(test_untyped_collector.GetMetricUnit().empty());
+  EXPECT_FALSE(test_collector.GetMetricName().empty());
+  EXPECT_FALSE(test_collector.GetMetricUnit().empty());
 }

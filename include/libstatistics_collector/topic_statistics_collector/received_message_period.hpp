@@ -35,20 +35,25 @@ constexpr const int64_t kUninitializedTime{0};
 
 /**
  * Primary specialization class template until deprecated templated class is phased out
+ * @warning Don't use templated version of the ReceivedMessagePeriodCollector, use
+ * libstatistics_collector::ReceivedMessagePeriodCollector alias with rmw_message_info_t
+ * parameter in the OnMessageReceived callback
  */
 template<typename T = rmw_message_info_t, typename Enable = void>
 class ReceivedMessagePeriodCollector : public TopicStatisticsCollector<T>
 {};
 
 /**
- * Class used to measure the received messsage, tparam T, period from a ROS2 subscriber. This class
+ * Class used to measure the received message, tparam T, period from a ROS2 subscriber. This class
  * is thread safe and acquires a mutex when the member OnMessageReceived is executed.
  *
  * @tparam T the message type to receive from the subscriber / listener
 */
 template<typename T>
-class ReceivedMessagePeriodCollector<
-    T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
+class
+  [[deprecated("Don't use templated version of the ReceivedMessagePeriodCollector, use"
+  "libstatistics_collector::ReceivedMessagePeriodCollector alias instead")]]
+  ReceivedMessagePeriodCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
   : public TopicStatisticsCollector<T>
 {
 public:
@@ -70,8 +75,6 @@ public:
    * @param received_message
    * @param now_nanoseconds time the message was received in nanoseconds
    */
-  [[deprecated("Don't use ReceivedMessagePeriodCollector with type T, use rmw_message_info_t"
-  "with an untyped ReceivedMessagePeriodCollector<>")]]
   void OnMessageReceived(const T & received_message, const rcl_time_point_value_t now_nanoseconds)
   override RCPPUTILS_TSA_REQUIRES(mutex_)
   {
@@ -143,7 +146,8 @@ private:
 };
 
 template<>
-class ReceivedMessagePeriodCollector<rmw_message_info_t,
+class ReceivedMessagePeriodCollector<
+    rmw_message_info_t,
     std::enable_if_t<std::is_same<rmw_message_info_t, rmw_message_info_t>::value>>
   : public TopicStatisticsCollector<>
 {
@@ -157,7 +161,7 @@ public:
     ResetTimeLastMessageReceived();
   }
 
-  virtual ~ReceivedMessagePeriodCollector() = default;
+  ~ReceivedMessagePeriodCollector() override = default;
 
   /**
    * Handle a message received and measure its received period. This member is thread safe and acquires
@@ -237,6 +241,9 @@ private:
 };
 
 }  // namespace topic_statistics_collector
+
+using ReceivedMessagePeriodCollector = topic_statistics_collector::ReceivedMessagePeriodCollector<>;
+
 }  // namespace libstatistics_collector
 
 #endif  // LIBSTATISTICS_COLLECTOR__TOPIC_STATISTICS_COLLECTOR__RECEIVED_MESSAGE_PERIOD_HPP_
