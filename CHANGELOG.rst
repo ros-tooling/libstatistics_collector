@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.6.4 (2023-11-06)
+------------------
 * Bump rolling to 1.6.3 (`#173 <https://github.com/ros-tooling/libstatistics_collector/issues/173>`_)
 * Bump actions/checkout from 3 to 4 (`#169 <https://github.com/ros-tooling/libstatistics_collector/issues/169>`_)
 * Add API to use message_info instead unserialized message (`#170 <https://github.com/ros-tooling/libstatistics_collector/issues/170>`_)
