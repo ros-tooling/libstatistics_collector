@@ -2,6 +2,14 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump rolling to 1.6.3 (`#173 <https://github.com/ros-tooling/libstatistics_collector/issues/173>`_)
+* Bump actions/checkout from 3 to 4 (`#169 <https://github.com/ros-tooling/libstatistics_collector/issues/169>`_)
+* Add API to use message_info instead unserialized message (`#170 <https://github.com/ros-tooling/libstatistics_collector/issues/170>`_)
+* Bump codecov/codecov-action from 3.1.3 to 3.1.4
+* Contributors: Lucas Wendland, Michael Orlov, dependabot[bot]
+
 1.6.3 (2023-10-16)
 ------------------
 * Bump actions/checkout from 3 to 4 (`#169 <https://github.com/ros-tooling/libstatistics_collector/issues/169>`_)
