@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add in missing cstdint include. (`#172 <https://github.com/ros-tooling/libstatistics_collector/issues/172>`_)
+* Contributors: Chris Lalancette
+
 1.5.1 (2023-04-12)
 ------------------
 * Bump hmarr/auto-approve-action from 3.2.0 to 3.2.1
