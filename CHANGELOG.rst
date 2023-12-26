@@ -2,6 +2,12 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump actions/upload-artifact from 3 to 4
+* Switch to using target_link_libraries everywhere. (`#174 <https://github.com/ros-tooling/libstatistics_collector/issues/174>`_)
+* Contributors: Chris Lalancette, dependabot[bot]
+
 1.6.4 (2023-11-06)
 ------------------
 * Bump rolling to 1.6.3 (`#173 <https://github.com/ros-tooling/libstatistics_collector/issues/173>`_)
