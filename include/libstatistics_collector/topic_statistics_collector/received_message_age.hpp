@@ -103,6 +103,7 @@ class ReceivedMessageAgeCollector : public TopicStatisticsCollector<T>
 */
 template<typename T>
 class
+// *INDENT-OFF*
   [[deprecated("Don't use templated version of the ReceivedMessageAgeCollector, use"
   "libstatistics_collector::ReceivedMessageAgeCollector alias instead")]]
   ReceivedMessageAgeCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
@@ -171,14 +172,14 @@ protected:
     return true;
   }
 };
+// *INDENT-ON*
 
 /**
  * Class used to measure the received message age from a ROS2 subscriber.
 */
+using message_info_same = std::is_same<rmw_message_info_t, rmw_message_info_t>;
 template<>
-class ReceivedMessageAgeCollector<
-    rmw_message_info_t,
-    std::enable_if_t<std::is_same<rmw_message_info_t, rmw_message_info_t>::value>>
+class ReceivedMessageAgeCollector<rmw_message_info_t, std::enable_if_t<message_info_same::value>>
   : public TopicStatisticsCollector<>
 {
 public:
