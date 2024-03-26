@@ -45,6 +45,7 @@ class TopicStatisticsCollector : public collector::Collector
  *
  * @tparam T the ROS2 message type to collect
  */
+// *INDENT-OFF*
 template<typename T>
 class
   [[deprecated("Don't use templated version of the TopicStatisticsCollector, use"
@@ -69,13 +70,14 @@ public:
     const T & received_message,
     const rcl_time_point_value_t now_nanoseconds) = 0;
 };
+// *INDENT-ON*
 
 /**
  * Interface to collect and perform measurements for ROS2 topic statistics.
  */
+using message_info_same = std::is_same<rmw_message_info_t, rmw_message_info_t>;
 template<>
-class TopicStatisticsCollector<rmw_message_info_t,
-    std::enable_if_t<std::is_same<rmw_message_info_t, rmw_message_info_t>::value>>
+class TopicStatisticsCollector<rmw_message_info_t, std::enable_if_t<message_info_same::value>>
   : public collector::Collector
 {
 public:

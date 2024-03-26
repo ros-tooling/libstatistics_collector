@@ -49,6 +49,7 @@ class ReceivedMessagePeriodCollector : public TopicStatisticsCollector<T>
  *
  * @tparam T the message type to receive from the subscriber / listener
 */
+// *INDENT-OFF*
 template<typename T>
 class
   [[deprecated("Don't use templated version of the ReceivedMessagePeriodCollector, use"
@@ -144,11 +145,11 @@ private:
     kUninitializedTime;
   mutable std::mutex mutex_;
 };
+// *INDENT-ON*
 
+using message_info_same = std::is_same<rmw_message_info_t, rmw_message_info_t>;
 template<>
-class ReceivedMessagePeriodCollector<
-    rmw_message_info_t,
-    std::enable_if_t<std::is_same<rmw_message_info_t, rmw_message_info_t>::value>>
+class ReceivedMessagePeriodCollector<rmw_message_info_t, std::enable_if_t<message_info_same::value>>
   : public TopicStatisticsCollector<>
 {
 public:
