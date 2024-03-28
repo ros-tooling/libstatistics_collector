@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.7.1 (2024-03-28)
+------------------
 * Fixes for newer uncrustify. (`#186 <https://github.com/ros-tooling/libstatistics_collector/issues/186>`_)
 * Contributors: Chris Lalancette, dependabot[bot]
 
