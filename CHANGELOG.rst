@@ -2,6 +2,12 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump pascalgn/automerge-action from 0.16.2 to 0.16.3
+* Bump codecov/codecov-action from 4.1.1 to 4.2.0
+* Contributors: dependabot[bot]
+
 1.7.1 (2024-03-28)
 ------------------
 * Fixes for newer uncrustify. (`#186 <https://github.com/ros-tooling/libstatistics_collector/issues/186>`_)
