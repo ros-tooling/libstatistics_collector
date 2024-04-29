@@ -19,13 +19,13 @@ jobs:
       with:
         package-name: libstatistics_collector
         colcon-defaults: |
-        {
-          "build": {
-            "mixin": [
-              "coverage-gcc",
-            ]
-          },
-        }
+          {
+            "build": {
+              "mixin": [
+                "coverage-gcc",
+              ]
+            },
+          }
         target-ros2-distro: rolling
     - uses: codecov/codecov-action@v4.3.0
       with:
