@@ -22,9 +22,9 @@ jobs:
           {
             "build": {
               "mixin": [
-                "coverage-gcc",
+                "coverage-gcc"
               ]
-            },
+            }
           }
         target-ros2-distro: rolling
     - uses: codecov/codecov-action@v4.3.0
@@ -51,9 +51,9 @@ jobs:
           {
             "build": {
               "mixin": [
-                "asan",
+                "asan"
               ]
-            },
+            }
           }
         package-name: libstatistics_collector
         target-ros2-distro: rolling
