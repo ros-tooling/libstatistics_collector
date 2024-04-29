@@ -51,7 +51,7 @@ jobs:
           {
             "build": {
               "mixin": [
-                "asan"
+                "asan-gcc"
               ]
             }
           }
