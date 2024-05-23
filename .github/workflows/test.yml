@@ -56,7 +56,7 @@ jobs:
             }
           }
         package-name: libstatistics_collector
-        target-ros2-distro: rolling
+        target-ros2-distro: jazzy
     - uses: actions/upload-artifact@v4
       with:
         name: colcon-logs-ubuntu-asan
