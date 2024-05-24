@@ -178,6 +178,8 @@ public:
   {
     std::unique_lock<std::mutex> ulock{mutex_};
 
+    (void) message_info;
+
     if (time_last_message_received_ == kUninitializedTime) {
       time_last_message_received_ = now_nanoseconds;
     } else {
