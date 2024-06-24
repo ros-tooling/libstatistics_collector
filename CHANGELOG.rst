@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.7.3 (2024-06-24)
+------------------
 * fix: add void annotation (`#194 <https://github.com/ros-tooling/libstatistics_collector/issues/194>`_) (`#195 <https://github.com/ros-tooling/libstatistics_collector/issues/195>`_)
 * Contributors: Daisuke Nishimatsu
 
