@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix: add void annotation (`#194 <https://github.com/ros-tooling/libstatistics_collector/issues/194>`_) (`#195 <https://github.com/ros-tooling/libstatistics_collector/issues/195>`_)
+* Contributors: Daisuke Nishimatsu
+
 1.7.2 (2024-04-24)
 ------------------
 * Bump pascalgn/automerge-action from 0.16.2 to 0.16.3
