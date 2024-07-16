@@ -42,38 +42,6 @@ class TopicStatisticsCollector : public collector::Collector
 
 /**
  * Interface to collect and perform measurements for ROS2 topic statistics.
- *
- * @tparam T the ROS2 message type to collect
- */
-// *INDENT-OFF*
-template<typename T>
-class
-  [[deprecated("Don't use templated version of the TopicStatisticsCollector, use"
-  "libstatistics_collector::TopicStatisticsCollector alias instead")]]
-  TopicStatisticsCollector<T, std::enable_if_t<!std::is_same<T, rmw_message_info_t>::value>>
-  : public collector::Collector
-{
-public:
-  TopicStatisticsCollector() = default;
-
-  virtual ~TopicStatisticsCollector() = default;
-
-  /**
-   * Handle receiving a single message of type T.
-   *
-   * @param received_message T the ROS2 message type to collect
-   * @param now_nanoseconds nanoseconds the time the message was received. Any metrics using this time assumes the
-   * following 1). the time provided is strictly monotonic 2). the time provided uses the same source
-   * as time obtained from the message header.
-   */
-  virtual void OnMessageReceived(
-    const T & received_message,
-    const rcl_time_point_value_t now_nanoseconds) = 0;
-};
-// *INDENT-ON*
-
-/**
- * Interface to collect and perform measurements for ROS2 topic statistics.
  */
 using message_info_same = std::is_same<rmw_message_info_t, rmw_message_info_t>;
 template<>
