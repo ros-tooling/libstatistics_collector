@@ -2,12 +2,14 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.2 (2024-07-26)
+------------------
+* Add in missing cstdint include. (`#165 <https://github.com/ros-tooling/libstatistics_collector/issues/165>`_) (`#197 <https://github.com/ros-tooling/libstatistics_collector/issues/197>`_)
+* Contributors: mergify[bot]
+
 1.3.1 (2023-02-21)
 ------------------
 * Check if message has a "header" field with a stamp subfield of type builtin_interfaces::msg::Time (`#54 <https://github.com/ros-tooling/libstatistics_collector/issues/54>`_) (`#153 <https://github.com/ros-tooling/libstatistics_collector/issues/153>`_)
-  * Fix for Issue 51. Adds check to HasHeader template to check that the message
-  in question has a field called 'header' with a subfield 'stamp' of type builtin_interfaces::msg::Time.
-  Added unit test case and DummyCustomHeaderMessage for use with tests.
 * Contributors: Tim Clephas
 
 1.3.0 (2022-11-07)
