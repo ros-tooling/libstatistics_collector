@@ -73,7 +73,7 @@ void MovingAverageStatistics::Reset()
   std::lock_guard<std::mutex> guard{mutex_};
   average_ = 0;
   min_ = std::numeric_limits<double>::max();
-  max_ = std::numeric_limits<double>::min();
+  max_ = std::numeric_limits<double>::lowest();
   sum_of_square_diff_from_mean_ = 0;
   count_ = 0;
 }
