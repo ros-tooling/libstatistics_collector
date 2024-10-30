@@ -146,6 +146,29 @@ TEST_F(MovingAverageStatisticsTestFixture, TestGetStatisticsInt) {
   EXPECT_EQ(result.sample_count, kExpectedSize);
 }
 
+TEST_F(MovingAverageStatisticsTestFixture, TestGetStatisticsAllNegative) {
+  moving_average_statistics_->Reset();
+
+  constexpr double data_negative[] = {-1.f, -2.f, -3.f, -4.f, -5.f, -6.f, -7.f, -8.f, -9.f, -10.f};
+
+  constexpr double kExpectedAverage = -5.5;
+  constexpr double kExpectedMinimum = -10;
+  constexpr double kExpectedMaximum = -1;
+  constexpr double kExpectedStd = 2.8722813232690143;
+  constexpr int kExpectedSize = 10;
+
+  for (auto d : data_negative) {
+    moving_average_statistics_->AddMeasurement(d);
+  }
+
+  auto result = moving_average_statistics_->GetStatistics();
+  EXPECT_DOUBLE_EQ(result.average, kExpectedAverage);
+  EXPECT_DOUBLE_EQ(result.min, kExpectedMinimum);
+  EXPECT_DOUBLE_EQ(result.max, kExpectedMaximum);
+  EXPECT_DOUBLE_EQ(result.standard_deviation, kExpectedStd);
+  EXPECT_EQ(result.sample_count, kExpectedSize);
+}
+
 TEST_F(MovingAverageStatisticsTestFixture, TestReset) {
   moving_average_statistics_->AddMeasurement(0.6);
   moving_average_statistics_->Reset();

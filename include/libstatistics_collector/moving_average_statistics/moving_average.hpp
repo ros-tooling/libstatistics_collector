@@ -128,7 +128,7 @@ private:
   mutable std::mutex mutex_;
   double average_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
   double min_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = std::numeric_limits<double>::max();
-  double max_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = std::numeric_limits<double>::min();
+  double max_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = std::numeric_limits<double>::lowest();
   double sum_of_square_diff_from_mean_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
   uint64_t count_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
 };
