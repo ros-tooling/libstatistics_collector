@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.5.3 (2024-11-09)
+------------------
 * Fix MovingAverageStatistics::max\_ Default Value (`#203 <https://github.com/ros-tooling/libstatistics_collector/issues/203>`_)
 * Contributors: Jeffery Hsu
 
