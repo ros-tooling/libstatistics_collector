@@ -2,8 +2,8 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.1 (2024-11-20)
+------------------
 * Bump codecov/codecov-action from 4.5.0 to 4.6.0
 * Fix MovingAverageStatistics::max\_ Default Value (`#201 <https://github.com/ros-tooling/libstatistics_collector/issues/201>`_)
 * Contributors: Jeffery Hsu, dependabot[bot]
