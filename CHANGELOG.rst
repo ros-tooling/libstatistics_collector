@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.3 (2024-11-25)
+------------------
+* Fix MovingAverageStatistics::max\_ Default Value (`#201 <https://github.com/ros-tooling/libstatistics_collector/issues/201>`_) (`#204 <https://github.com/ros-tooling/libstatistics_collector/issues/204>`_)
+* Contributors: mergify[bot]
+
 1.3.2 (2024-07-26)
 ------------------
 * Add in missing cstdint include. (`#165 <https://github.com/ros-tooling/libstatistics_collector/issues/165>`_) (`#197 <https://github.com/ros-tooling/libstatistics_collector/issues/197>`_)
