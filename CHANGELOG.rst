@@ -2,6 +2,13 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix MovingAverageStatistics::max\_ Default Value (`#201 <https://github.com/ros-tooling/libstatistics_collector/issues/201>`_) (`#202 <https://github.com/ros-tooling/libstatistics_collector/issues/202>`_)
+  (cherry picked from commit 34578144166d44e02611fa0ffd23f389c2f3ec9b)
+  Co-authored-by: Jeffery Hsu <jefferyyjhsu@gmail.com>
+* Contributors: mergify[bot]
+
 1.7.3 (2024-06-24)
 ------------------
 * fix: add void annotation (`#194 <https://github.com/ros-tooling/libstatistics_collector/issues/194>`_) (`#195 <https://github.com/ros-tooling/libstatistics_collector/issues/195>`_)
