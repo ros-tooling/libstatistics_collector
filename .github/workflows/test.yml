@@ -27,7 +27,7 @@ jobs:
             }
           }
         target-ros2-distro: rolling
-    - uses: codecov/codecov-action@v5.1.2
+    - uses: codecov/codecov-action@v5.3.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ros_ws/lcov/total_coverage.info
