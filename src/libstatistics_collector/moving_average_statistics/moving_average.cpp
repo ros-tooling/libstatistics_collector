@@ -29,6 +29,9 @@ namespace libstatistics_collector
 namespace moving_average_statistics
 {
 
+MovingAverageStatistics::MovingAverageStatistics(const std::size_t & window_size)
+: window_size_{window_size} {}
+
 double MovingAverageStatistics::Average() const
 {
   return GetStatistics().average;
@@ -83,9 +86,13 @@ void MovingAverageStatistics::AddMeasurement(const double item)
   std::lock_guard<std::mutex> guard{mutex_};
 
   if (!std::isnan(item)) {
-    count_++;
     const double previous_average = average_;
-    average_ = previous_average + (item - previous_average) / count_;
+    if (window_size_ == 0 || count_ < window_size_) {
+      count_++;
+      average_ = previous_average + (item - previous_average) / count_;
+    } else {
+      average_ = previous_average + (item - previous_average) / window_size_;
+    }
     min_ = std::min(min_, item);
     max_ = std::max(max_, item);
     sum_of_square_diff_from_mean_ = sum_of_square_diff_from_mean_ + (item - previous_average) *
