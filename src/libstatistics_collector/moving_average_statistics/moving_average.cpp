@@ -79,6 +79,7 @@ void MovingAverageStatistics::Reset()
   max_ = std::numeric_limits<double>::lowest();
   sum_of_square_diff_from_mean_ = 0;
   count_ = 0;
+  window_buffer_.clear();
 }
 
 void MovingAverageStatistics::AddMeasurement(const double item)
@@ -90,8 +91,22 @@ void MovingAverageStatistics::AddMeasurement(const double item)
     if (window_size_ == 0 || count_ < window_size_) {
       count_++;
       average_ = previous_average + (item - previous_average) / count_;
-    } else {
-      average_ = previous_average + (item - previous_average) / window_size_;
+      if (window_size_ != 0) {
+        window_buffer_.push_back(item);
+      }
+    } else if (window_size_ > 0) {
+      const double old_item = window_buffer_.front();
+      window_buffer_.pop_front();
+      average_ = previous_average + (item - old_item) / window_size_;
+      sum_of_square_diff_from_mean_ = sum_of_square_diff_from_mean_ - (old_item - average_) *
+        (old_item - previous_average);
+      if (std::abs(old_item - min_) < std::numeric_limits<double>::epsilon()) {
+        min_ = *std::min_element(window_buffer_.begin(), window_buffer_.end());
+      }
+      if (std::abs(old_item - max_) < std::numeric_limits<double>::epsilon()) {
+        max_ = *std::max_element(window_buffer_.begin(), window_buffer_.end());
+      }
+      window_buffer_.push_back(item);
     }
     min_ = std::min(min_, item);
     max_ = std::max(max_, item);

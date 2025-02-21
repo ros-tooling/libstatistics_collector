@@ -18,6 +18,7 @@
 #include <cmath>
 
 #include <algorithm>
+#include <deque>
 #include <limits>
 #include <mutex>
 #include <numeric>
@@ -135,6 +136,7 @@ private:
   double sum_of_square_diff_from_mean_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
   uint64_t count_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
   std::size_t window_size_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
+  std::deque<double> window_buffer_;
 };
 
 }  // namespace moving_average_statistics
