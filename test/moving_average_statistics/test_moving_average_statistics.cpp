@@ -226,3 +226,49 @@ TEST(MovingAverageStatisticsTest, TestPrettyPrinting) {
     libstatistics_collector::moving_average_statistics::StatisticsDataToString(
       stats.GetStatistics()));
 }
+
+TEST_F(MovingAverageStatisticsTestFixture, TestWindowSizeInitialization) {
+  constexpr size_t window_size = 5;
+  MovingAverageStatistics windowed_stats(window_size);
+
+  const auto data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+  const double kExpectedAverage = 8.0;
+  const double kExpectedMinimum = 6.0;
+  const double kExpectedMaximum = 10.0;
+  const double kExpectedStd = 1.5811388300841898;
+  const int kExpectedSize = window_size;
+
+  for (auto d : data) {
+    windowed_stats.AddMeasurement(static_cast<double>(d));
+  }
+
+  EXPECT_EQ(windowed_stats.GetCount(), kExpectedSize);
+  EXPECT_DOUBLE_EQ(windowed_stats.Average(), kExpectedAverage);
+  EXPECT_DOUBLE_EQ(windowed_stats.Min(), kExpectedMinimum);
+  EXPECT_DOUBLE_EQ(windowed_stats.Max(), kExpectedMaximum);
+  EXPECT_DOUBLE_EQ(windowed_stats.StandardDeviation(), kExpectedStd);
+}
+
+TEST_F(MovingAverageStatisticsTestFixture, TestWindowSizeInitializationWithFewerData) {
+  constexpr size_t window_size = 5;
+  MovingAverageStatistics windowed_stats(window_size);
+
+  const auto data = {1, 2, 3};
+
+  const double kExpectedAverage = 2.0;
+  const double kExpectedMinimum = 1.0;
+  const double kExpectedMaximum = 3.0;
+  const double kExpectedStd = 1.0;
+  const int kExpectedSize = 3;
+
+  for (auto d : data) {
+    windowed_stats.AddMeasurement(static_cast<double>(d));
+  }
+
+  EXPECT_EQ(windowed_stats.GetCount(), kExpectedSize);
+  EXPECT_DOUBLE_EQ(windowed_stats.Average(), kExpectedAverage);
+  EXPECT_DOUBLE_EQ(windowed_stats.Min(), kExpectedMinimum);
+  EXPECT_DOUBLE_EQ(windowed_stats.Max(), kExpectedMaximum);
+  EXPECT_DOUBLE_EQ(windowed_stats.StandardDeviation(), kExpectedStd);
+}
