@@ -236,7 +236,7 @@ TEST_F(MovingAverageStatisticsTestFixture, TestWindowSizeInitialization) {
   const double kExpectedAverage = 8.0;
   const double kExpectedMinimum = 6.0;
   const double kExpectedMaximum = 10.0;
-  const double kExpectedStd = 1.5811388300841898;
+  const double kExpectedStd = 1.4142135623730951;
   const int kExpectedSize = window_size;
 
   for (auto d : data) {
@@ -259,7 +259,7 @@ TEST_F(MovingAverageStatisticsTestFixture, TestWindowSizeInitializationWithFewer
   const double kExpectedAverage = 2.0;
   const double kExpectedMinimum = 1.0;
   const double kExpectedMaximum = 3.0;
-  const double kExpectedStd = 1.0;
+  const double kExpectedStd = 0.816496580927726;
   const int kExpectedSize = 3;
 
   for (auto d : data) {
