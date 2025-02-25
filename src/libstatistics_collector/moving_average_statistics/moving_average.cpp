@@ -29,7 +29,7 @@ namespace libstatistics_collector
 namespace moving_average_statistics
 {
 
-MovingAverageStatistics::MovingAverageStatistics(const std::size_t & window_size)
+MovingAverageStatistics::MovingAverageStatistics(std::size_t window_size)
 : window_size_{window_size} {}
 
 double MovingAverageStatistics::Average() const

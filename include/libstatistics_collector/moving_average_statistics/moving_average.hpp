@@ -54,7 +54,7 @@ public:
   MovingAverageStatistics() = default;
 
   LIBSTATISTICS_COLLECTOR_PUBLIC
-  explicit MovingAverageStatistics(const std::size_t & window_size);
+  explicit MovingAverageStatistics(std::size_t window_size);
 
   LIBSTATISTICS_COLLECTOR_PUBLIC
   ~MovingAverageStatistics() = default;
