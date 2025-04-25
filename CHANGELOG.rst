@@ -2,6 +2,15 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.1.0 (2025-04-25)
+------------------
+* Bump ros-tooling/action-ros-ci from 0.3 to 0.4
+* Bump codecov/codecov-action from 5.3.1 to 5.4.0
+* Bump codecov/codecov-action from 5.1.2 to 5.3.1
+* Bump codecov/codecov-action from 5.0.7 to 5.1.2
+* Bump codecov/codecov-action from 4.6.0 to 5.0.7
+* Contributors: dependabot[bot]
+
 2.0.1 (2024-11-20)
 ------------------
 * Bump codecov/codecov-action from 4.5.0 to 4.6.0
