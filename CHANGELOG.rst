@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix cmake deprecation (`#214 <https://github.com/ros-tooling/libstatistics_collector/issues/214>`_)
+* Contributors: mosfet80
+
 2.1.0 (2025-04-25)
 ------------------
 * Bump ros-tooling/action-ros-ci from 0.3 to 0.4
