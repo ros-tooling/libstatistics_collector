@@ -48,11 +48,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include/${PROJECT_NAME}>")
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
-  ${builtin_interfaces_TARGETS}
+  builtin_interfaces::builtin_interfaces
   rcl::rcl
   rcpputils::rcpputils
   rmw::rmw
-  ${statistics_msgs_TARGETS}
+  statistics_msgs::statistics_msgs
 )
 
 install(
