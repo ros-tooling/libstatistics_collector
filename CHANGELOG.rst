@@ -2,6 +2,11 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Use new aggregate rosidl target instead of _TARGETS (`#222 <https://github.com/ros-tooling/libstatistics_collector/issues/222>`_)
+* Contributors: Alexis Tsogias, dependabot[bot]
+
 2.1.1 (2025-07-01)
 ------------------
 * fix cmake deprecation (`#214 <https://github.com/ros-tooling/libstatistics_collector/issues/214>`_)
