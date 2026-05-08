@@ -2,6 +2,9 @@
 Changelog for package libstatistics_collector
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.1.2 (2026-04-30)
 ------------------
 * Use new aggregate rosidl target instead of _TARGETS (`#222 <https://github.com/ros-tooling/libstatistics_collector/issues/222>`_)
