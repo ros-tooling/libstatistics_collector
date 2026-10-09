@@ -18,6 +18,7 @@
 #include <cmath>
 
 #include <algorithm>
+#include <deque>
 #include <limits>
 #include <mutex>
 #include <numeric>
@@ -51,6 +52,9 @@ class MovingAverageStatistics
 public:
   LIBSTATISTICS_COLLECTOR_PUBLIC
   MovingAverageStatistics() = default;
+
+  LIBSTATISTICS_COLLECTOR_PUBLIC
+  explicit MovingAverageStatistics(std::size_t window_size);
 
   LIBSTATISTICS_COLLECTOR_PUBLIC
   ~MovingAverageStatistics() = default;
@@ -131,6 +135,8 @@ private:
   double max_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = std::numeric_limits<double>::lowest();
   double sum_of_square_diff_from_mean_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
   uint64_t count_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
+  std::size_t window_size_ RCPPUTILS_TSA_GUARDED_BY(mutex_) = 0;
+  std::deque<double> window_buffer_;
 };
 
 }  // namespace moving_average_statistics
